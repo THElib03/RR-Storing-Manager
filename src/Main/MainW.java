@@ -2649,6 +2649,7 @@ public class MainW extends javax.swing.JFrame {
             PreparedStatement insertSta;
             DateTimeFormatter date;
             LocalDateTime now;
+            boolean omit = false;
             int id, price, donor, res;
             long stock, cuantity;
             double rate;
@@ -2657,23 +2658,34 @@ public class MainW extends javax.swing.JFrame {
             
             switch(tableName){
                 case "Resource":
-                    id = Integer.parseInt(ResAddIDInput.getText());
-                    name = ResAddNameInput.getText();
-                    stock = Long.parseLong(ResAddStockInput.getText());
-                    
-                    System.out.println("User wants to insert a new Resource with ID " + id + ", named " + name + " and with an initial stock of " + stock);
+                    if(ResAddIDInput.getText().equals("") || ResAddNameInput.getText().equals("") || ResAddStockInput.getText().equals("")){
+                        this.mensaje("Información incorrecta","Uno o varios de los campos están vacíos.",1);
+                        omit = true;
+                        break;
+                    }
                     
                     try{
-                        insertSta = bridge.conn.prepareStatement("INSERT INTO Resource VALUES(?, ?, ?)");
-                        insertSta.setInt(1, id);
-                        insertSta.setString(2, name);
-                        insertSta.setLong(3, stock);
+                        id = Integer.parseInt(ResAddIDInput.getText());
+                        name = ResAddNameInput.getText();
+                        stock = Long.parseLong(ResAddStockInput.getText());
                         
-                        exec = insertSta.executeUpdate();
+                        System.out.println("User wants to insert a new Resource with ID " + id + ", named " + name + " and with an initial stock of " + stock);
+
+                        try{
+                            insertSta = bridge.conn.prepareStatement("INSERT INTO Resource VALUES(?, ?, ?)");
+                            insertSta.setInt(1, id);
+                            insertSta.setString(2, name);
+                            insertSta.setLong(3, stock);
+
+                            exec = insertSta.executeUpdate();
+                        }
+                        catch(SQLException sqle) {
+                            this.mensaje("Información","Error SQL: " + sqle.getMessage(),1);
+                            sqle.printStackTrace();
+                        }
                     }
-                    catch(SQLException sqle) {
-                        this.mensaje("Información","Error SQL: " + sqle.getMessage(),1);
-                        sqle.printStackTrace();
+                    catch(NumberFormatException nfe){
+                        this.mensaje("Información incorrecta", "Uno o varios de los campos no contienen los datos correctos.", 1);
                     }
                     
                     ResAddIDInput.setText("");
@@ -2771,32 +2783,34 @@ public class MainW extends javax.swing.JFrame {
                     break;
             }
             
-            if(exec == 1){
-                mensaje("Éxito", "Se han introducido los datos correctamente", 2);
-            }
-            else if(exec < 1){
-                mensaje("Error", "No se han podido introducir los datos, inténtelo de nuevo.", 2);
-            }
-            else if(exec > 1){
-                mensaje("Éxito (Error)", "Los datos se han introducido correctamente,\npero ha ocurrido algo inesperado.\n(Un total de " + exec + " líneas has sido afectadas)", 2);
-            }
-            
-            switch(tableName){
-                case "Resource":
-                    ShowResTable();
-                    break;
-                case "Donor":
-                    ShowDonorTable();
-                    break;
-                case "Donation":
-                    ShowDonaTable();
-                    break;
-                case "Sale":
-                    ShowSaleTable();
-                    break;
-                default:
-                    resetVisibility();
-                    break;
+            if(!omit){
+                if(exec == 1){
+                    mensaje("Éxito", "Se han introducido los datos correctamente", 2);
+                }
+                else if(exec < 1){
+                    mensaje("Error", "No se han podido introducir los datos, inténtelo de nuevo.", 2);
+                }
+                else if(exec > 1){
+                    mensaje("Éxito (Error)", "Los datos se han introducido correctamente,\npero ha ocurrido algo inesperado.\n(Un total de " + exec + " líneas has sido afectadas)", 2);
+                }
+                
+                switch(tableName){
+                    case "Resource":
+                        ShowResTable();
+                        break;
+                    case "Donor":
+                        ShowDonorTable();
+                        break;
+                    case "Donation":
+                        ShowDonaTable();
+                        break;
+                    case "Sale":
+                        ShowSaleTable();
+                        break;
+                    default:
+                        resetVisibility();
+                        break;
+                }
             }
         }
         else if(warn1 == 2){
