@@ -2356,7 +2356,7 @@ public class MainW extends javax.swing.JFrame {
                 break;
             default:
                 tModel = (DefaultTableModel) this.SaleTable.getModel();
-                this.mensaje("Información","Error de función, no se ha especificado la tabla a mostrar: ",1);
+                this.message("Información","Error de función, no se ha especificado la tabla a mostrar: ",1);
                 break;
         };
         
@@ -2412,7 +2412,7 @@ public class MainW extends javax.swing.JFrame {
                     break;
                 default:
                     System.out.println("No hay una tabla definida, no se mostrará nada.");
-                    this.mensaje("Información","Error de función, no se ha especificado la tabla a mostrar: ",1);
+                    this.message("Información","Error de función, no se ha especificado la tabla a mostrar: ",1);
                     break;
             }
             
@@ -2420,7 +2420,7 @@ public class MainW extends javax.swing.JFrame {
             auxBridge.close();
         }
         catch(SQLException sqle) {
-               this.mensaje("Información","Error SQL: " + sqle.getMessage(),1);
+               this.message("Información","Error SQL: " + sqle.getMessage(),1);
                sqle.printStackTrace();
         }
         catch(NullPointerException npe){
@@ -2554,7 +2554,7 @@ public class MainW extends javax.swing.JFrame {
                     ShowSaleModify();
                     break;
                 default:
-                    this.mensaje("Información", "No se ha especificado una tabla que editar.", 1);
+                    this.message("Información", "No se ha especificado una tabla que editar.", 1);
                     break;
             }
         }
@@ -2626,7 +2626,7 @@ public class MainW extends javax.swing.JFrame {
                     ShowSaleRemove();
                     break;
                 default:
-                    this.mensaje("Información", "No se ha especificado una tabla que editar.", 1);
+                    this.message("Información", "No se ha especificado una tabla que editar.", 1);
                     break;
             }
         }
@@ -2659,7 +2659,8 @@ public class MainW extends javax.swing.JFrame {
             switch(tableName){
                 case "Resource":
                     if(ResAddIDInput.getText().equals("") || ResAddNameInput.getText().equals("") || ResAddStockInput.getText().equals("")){
-                        this.mensaje("Información incorrecta","Uno o varios de los campos están vacíos.",1);
+                        this.message("Información incorrecta","Uno o varios de los campos están vacíos.",1);
+                        System.out.println("User introduced blank fields, aborting operation.");
                         omit = true;
                         break;
                     }
@@ -2680,12 +2681,15 @@ public class MainW extends javax.swing.JFrame {
                             exec = insertSta.executeUpdate();
                         }
                         catch(SQLException sqle) {
-                            this.mensaje("Información","Error SQL: " + sqle.getMessage(),1);
+                            this.message("Información","Error SQL: " + sqle.getMessage(),1);
                             sqle.printStackTrace();
                         }
                     }
                     catch(NumberFormatException nfe){
-                        this.mensaje("Información incorrecta", "Uno o varios de los campos no contienen los datos correctos.", 1);
+                        this.message("Información incorrecta", "Uno o varios de los campos no contienen los datos correctos.", 1);
+                        System.out.println("Wrong data types introduced, aborting operation.");
+                        omit = true;
+                        break;
                     }
                     
                     ResAddIDInput.setText("");
@@ -2707,7 +2711,7 @@ public class MainW extends javax.swing.JFrame {
                         exec = insertSta.executeUpdate();
                     }
                     catch(SQLException sqle) {
-                        this.mensaje("Información","Error SQL: " + sqle.getMessage(),1);
+                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
                         sqle.printStackTrace();
                     }
                     
@@ -2739,7 +2743,7 @@ public class MainW extends javax.swing.JFrame {
                             
                     }
                     catch(SQLException sqle) {
-                        this.mensaje("Información","Error SQL: " + sqle.getMessage(),1);
+                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
                         sqle.printStackTrace();
                     }
                     
@@ -2769,7 +2773,7 @@ public class MainW extends javax.swing.JFrame {
                         exec = insertSta.executeUpdate();
                     }
                     catch(SQLException sqle) {
-                        this.mensaje("Información","Error SQL: " + sqle.getMessage(),1);
+                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
                         sqle.printStackTrace();
                     }
                     
@@ -2779,19 +2783,19 @@ public class MainW extends javax.swing.JFrame {
                     SaleAddPriceInput.setText("");
                     break;
                 default:
-                    this.mensaje("Error", "Error: El programa no ha podido indicar que tabla ha de ser modificada", 1);
+                    this.message("Error", "Error: El programa no ha podido indicar que tabla ha de ser modificada", 1);
                     break;
             }
             
             if(!omit){
                 if(exec == 1){
-                    mensaje("Éxito", "Se han introducido los datos correctamente", 2);
+                    message("Éxito", "Se han introducido los datos correctamente", 2);
                 }
                 else if(exec < 1){
-                    mensaje("Error", "No se han podido introducir los datos, inténtelo de nuevo.", 2);
+                    message("Error", "No se han podido introducir los datos, inténtelo de nuevo.", 2);
                 }
                 else if(exec > 1){
-                    mensaje("Éxito (Error)", "Los datos se han introducido correctamente,\npero ha ocurrido algo inesperado.\n(Un total de " + exec + " líneas has sido afectadas)", 2);
+                    message("Éxito (Error)", "Los datos se han introducido correctamente,\npero ha ocurrido algo inesperado.\n(Un total de " + exec + " líneas has sido afectadas)", 2);
                 }
                 
                 switch(tableName){
@@ -2830,6 +2834,7 @@ public class MainW extends javax.swing.JFrame {
         if(warn1 == 0){
             System.out.println("User chose option " + warn1 + ", operation confirmed");
             PreparedStatement modifySta;
+            boolean omit = false;
             int id, price, donor, res;
             long stock, cuantity;
             double rate;
@@ -2838,52 +2843,90 @@ public class MainW extends javax.swing.JFrame {
             
             switch(tableName){
                 case "Resource":
-                    id = Integer.parseInt(ResModifyIDInput.getText());
-                    name = ResModifyNameInput.getText();
-                    stock = Long.parseLong(ResModifyStockInput.getText());
-                    
-                    System.out.println("User wants to update the Resource nº " + id + ", to be named " + name + " and a new stock of " + stock);
+                    if(ResModifyIDInput.getText().equals("") || ResModifyNameInput.getText().equals("") || ResModifyStockInput.getText().equals("")){
+                        this.message("Información incorrecta","Uno o varios de los campos están vacíos.",1);
+                        System.out.println("User introduced blank fields, aborting operation.");
+                        omit = true;
+                        break;
+                    }
                     
                     try{
-                        modifySta = bridge.conn.prepareStatement("UPDATE Resource SET "
-                                                               + "ID  = ?, "
-                                                               + "type = ?, "
-                                                               + "stock  = ? "
-                                                               + "WHERE ID = " + id1);
+                        id = Integer.parseInt(ResModifyIDInput.getText());
+                        name = ResModifyNameInput.getText();
+                        stock = Long.parseLong(ResModifyStockInput.getText());
 
-                        modifySta.setInt(1, id);
-                        modifySta.setString(2, name);
-                        modifySta.setLong(3, stock);
+                        System.out.println("User wants to update the Resource nº " + id + ", to be named " + name + " and a new stock of " + stock);
+
+                        try{
+                            modifySta = bridge.conn.prepareStatement("UPDATE Resource SET "
+                                                                   + "ID  = ?, "
+                                                                   + "type = ?, "
+                                                                   + "stock  = ? "
+                                                                   + "WHERE ID = " + id1);
+
+                            modifySta.setInt(1, id);
+                            modifySta.setString(2, name);
+                            modifySta.setLong(3, stock);
+
+                            exec = modifySta.executeUpdate();
+                        }
+                        catch(SQLException sqle) {
+                            this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                            sqle.printStackTrace();
+                        }
                         
-                        exec = modifySta.executeUpdate();
+                        ResModifyIDInput.setText("");
+                        ResModifyNameInput.setText("");
+                        ResModifyStockInput.setText("");
                     }
-                    catch(SQLException sqle) {
-                        this.mensaje("Información","Error SQL: " + sqle.getMessage(),1);
-                        sqle.printStackTrace();
+                    catch(NumberFormatException nfe){
+                        this.message("Información incorrecta", "Uno o varios de los campos no contienen los datos correctos.", 1);
+                        System.out.println("Wrong data types introduced, aborting operation.");
+                        omit = true;
+                        break;
                     }
                     break;
                 case "Donor":
-                    id = Integer.parseInt(DonorModifyIDInput.getText());
-                    name = DonorModifyNameInput.getText();
-                    rate = Double.parseDouble(DonorModifyRateInput.getText()) / 100;
-                    System.out.println("User wants to update the Donor nº " + id + ", to be named " + name + " and a new rate of " + rate);
+                    if(DonorModifyIDInput.getText().equals("") || DonorModifyNameInput.getText().equals("") || DonorModifyRateInput.getText().equals("")){
+                        this.message("Información incorrecta","Uno o varios de los campos están vacíos.",1);
+                        System.out.println("User introduced blank fields, aborting operation.");
+                        omit = true;
+                        break;
+                    }
                     
                     try{
-                        modifySta = bridge.conn.prepareStatement("UPDATE Donor SET "
-                                                               + "ID = ?, "
-                                                               + "name = ?, "
-                                                               + "cRate = ?"
-                                                               + "WHERE ID = " + id1);
+                        id = Integer.parseInt(DonorModifyIDInput.getText());
+                        name = DonorModifyNameInput.getText();
+                        rate = Double.parseDouble(DonorModifyRateInput.getText()) / 100;
+                        System.out.println("User wants to update the Donor nº " + id + ", to be named " + name + " and a new rate of " + rate);
+
+                        try{
+                            modifySta = bridge.conn.prepareStatement("UPDATE Donor SET "
+                                                                   + "ID = ?, "
+                                                                   + "name = ?, "
+                                                                   + "cRate = ?"
+                                                                   + "WHERE ID = " + id1);
+
+                            modifySta.setInt(1, id);
+                            modifySta.setString(2, name);
+                            modifySta.setDouble(3, rate);
+
+                            exec = modifySta.executeUpdate();
+                        }
+                        catch(SQLException sqle) {
+                            this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                            sqle.printStackTrace();
+                        }
                         
-                        modifySta.setInt(1, id);
-                        modifySta.setString(2, name);
-                        modifySta.setDouble(3, rate);
-                        
-                        exec = modifySta.executeUpdate();
+                        DonorModifyIDInput.setText("");
+                        DonorModifyNameInput.setText("");
+                        DonorModifyRateInput.setText("");
                     }
-                    catch(SQLException sqle) {
-                        this.mensaje("Información","Error SQL: " + sqle.getMessage(),1);
-                        sqle.printStackTrace();
+                    catch(NumberFormatException nfe){
+                        this.message("Información incorrecta", "Uno o varios de los campos no contienen los datos correctos.", 1);
+                        System.out.println("Wrong data types introduced, aborting operation.");
+                        omit = true;
+                        break;
                     }
                     break;
                 case "Donation":
@@ -2912,7 +2955,7 @@ public class MainW extends javax.swing.JFrame {
                         exec = modifySta.executeUpdate();
                     }
                     catch(SQLException sqle) {
-                        this.mensaje("Información","Error SQL: " + sqle.getMessage(),1);
+                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
                         sqle.printStackTrace();
                     }
                     break;
@@ -2941,41 +2984,43 @@ public class MainW extends javax.swing.JFrame {
                         exec = modifySta.executeUpdate();
                     }
                     catch(SQLException sqle) {
-                        this.mensaje("Información","Error SQL: " + sqle.getMessage(),1);
+                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
                         sqle.printStackTrace();
                     }
                     break;
                 default:
-                    this.mensaje("Error", "Error: El programa no ha podido indicar que tabla ha de ser modificada", 1);
+                    this.message("Error", "Error: El programa no ha podido indicar que tabla ha de ser modificada", 1);
                     break;
             }
             
-            if(exec == 1){
-                mensaje("Éxito", "Se han modficado los datos correctamente", 2);
-            }
-            else if(exec < 1){
-                mensaje("Error", "No se han podido modificar los datos, inténtelo de nuevo.", 2);
-            }
-            else if(exec > 1){
-                mensaje("Éxito (Error)", "Los datos se han modificado correctamente,\npero ha ocurrido algo inesperado.\n(Un total de " + exec + " líneas has sido afectadas)", 2);
-            }
-            
-            switch(tableName){
-                case "Resource":
-                    ShowResTable();
-                    break;
-                case "Donor":
-                    ShowDonorTable();
-                    break;
-                case "Donation":
-                    ShowDonaTable();
-                    break;
-                case "Sale":
-                    ShowSaleTable();
-                    break;
-                default:
-                    resetVisibility();
-                    break;
+            if(!omit){
+                if(exec == 1){
+                    message("Éxito", "Se han modficado los datos correctamente", 2);
+                }
+                else if(exec < 1){
+                    message("Error", "No se han podido modificar los datos, inténtelo de nuevo.", 2);
+                }
+                else if(exec > 1){
+                    message("Éxito (Error)", "Los datos se han modificado correctamente,\npero ha ocurrido algo inesperado.\n(Un total de " + exec + " líneas has sido afectadas)", 2);
+                }
+
+                switch(tableName){
+                    case "Resource":
+                        ShowResTable();
+                        break;
+                    case "Donor":
+                        ShowDonorTable();
+                        break;
+                    case "Donation":
+                        ShowDonaTable();
+                        break;
+                    case "Sale":
+                        ShowSaleTable();
+                        break;
+                    default:
+                        resetVisibility();
+                        break;
+                }
             }
         }
         else if(warn1 == 2){
@@ -3002,7 +3047,7 @@ public class MainW extends javax.swing.JFrame {
                         exec = bridge.querier.executeUpdate("DELETE FROM Resource WHERE ID = " + id1);
                     }
                     catch(SQLException sqle) {
-                        this.mensaje("Información","Error SQL: " + sqle.getMessage(),1);
+                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
                         sqle.printStackTrace();
                     }
                     break;
@@ -3012,7 +3057,7 @@ public class MainW extends javax.swing.JFrame {
                         exec = bridge.querier.executeUpdate("DELETE FROM Donor WHERE ID = " + id1);
                     }
                     catch(SQLException sqle) {
-                        this.mensaje("Información","Error SQL: " + sqle.getMessage(),1);
+                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
                         sqle.printStackTrace();
                     }
                     break;
@@ -3022,7 +3067,7 @@ public class MainW extends javax.swing.JFrame {
                         exec = bridge.querier.executeUpdate("DELETE FROM Donation WHERE resID = " + id1 + " AND donorID = " + id2 + " AND sendTime = '" + date + "'");
                     }
                     catch(SQLException sqle) {
-                        this.mensaje("Información","Error SQL: " + sqle.getMessage(),1);
+                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
                         sqle.printStackTrace();
                     }
                     break;
@@ -3032,23 +3077,23 @@ public class MainW extends javax.swing.JFrame {
                         exec = bridge.querier.executeUpdate("DELETE FROM Sale WHERE ID = " + id1);
                     }
                     catch(SQLException sqle) {
-                        this.mensaje("Información","Error SQL: " + sqle.getMessage(),1);
+                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
                         sqle.printStackTrace();
                     }
                     break;
                 default:
-                    this.mensaje("Error", "Error: El programa no ha podido indicar que tabla ha de ser modificada", 1);
+                    this.message("Error", "Error: El programa no ha podido indicar que tabla ha de ser modificada", 1);
                     break;
             }
             
             if(exec == 1){
-                mensaje("Éxito", "Se han eliminado los datos correctamente", 2);
+                message("Éxito", "Se han eliminado los datos correctamente", 2);
             }
             else if(exec < 1){
-                mensaje("Error", "No se han podido modificar los datos, inténtelo de nuevo.", 2);
+                message("Error", "No se han podido modificar los datos, inténtelo de nuevo.", 2);
             }
             else if(exec > 1){
-                mensaje("Éxito (Error)", "Los datos se han modificado correctamente,\npero ha ocurrido algo inesperado.\n(Un total de " + exec + " líneas has sido afectadas)", 2);
+                message("Éxito (Error)", "Los datos se han modificado correctamente,\npero ha ocurrido algo inesperado.\n(Un total de " + exec + " líneas has sido afectadas)", 2);
             }
             
             switch(tableName){
@@ -3077,7 +3122,7 @@ public class MainW extends javax.swing.JFrame {
         }
     }
     
-    private void mensaje(String titulo, String m,int tipo){
+    private void message(String titulo, String m,int tipo){
         int tipoerr;
         switch(tipo) {
             case 1:  
