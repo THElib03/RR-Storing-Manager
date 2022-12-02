@@ -1629,17 +1629,9 @@ public class MainW extends javax.swing.JFrame {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 DefaultTableModel tModel = (DefaultTableModel) ResTable.getModel();
                 int selRow = ResTable.getSelectedRow();
-                    
-                if(selRow != -1){
-                    int id = (Integer) ResTable.getValueAt(selRow, 0);
-
-                    launchRowRemover("Resource", id, 0);
-                }
-                else{
-                    message("Selección errónea", "No se ha seleccionado el recurso a eliminar.", 3);
-                    System.out.println("User did not select a row from the table, future ResRemover with search ability here.");
-                    ShowResRemove();
-                }
+                int id = (Integer) ResTable.getValueAt(selRow, 0);
+                
+                launchRowRemover("Resource", id, 0);
             }
         });
         
@@ -1665,17 +1657,9 @@ public class MainW extends javax.swing.JFrame {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 DefaultTableModel tModel = (DefaultTableModel) DonorTable.getModel();
                 int selRow = DonorTable.getSelectedRow();
+                int id = (Integer) DonorTable.getValueAt(selRow, 0);
                 
-                if(selRow != -1){
-                    int id = (Integer) DonorTable.getValueAt(selRow, 0);
-
-                    launchRowRemover("Donor", id, 0);
-                }
-                else{
-                    message("Selección errónea", "No se ha seleccionado el donante a eliminar.", 3);
-                    System.out.println("User did not select a row from the table, future DonorRemover with search ability here.");
-                    ShowDonorRemove();
-                }
+                launchRowRemover("Donor", id, 0);
             }
         });
         
@@ -1702,20 +1686,13 @@ public class MainW extends javax.swing.JFrame {
                 DefaultTableModel tModel = (DefaultTableModel) DonaTable.getModel();
                 int selRow = DonaTable.getSelectedRow();
                 
-                if(selRow != -1){
-                    String resID = (String) DonaTable.getValueAt(selRow, 1);
-                    int id1 = Integer.parseInt(resID.split("\\(")[1].split("\\)")[0]);
-
-                    String donorID = (String) DonaTable.getValueAt(selRow, 0);
-                    int id2 = Integer.parseInt(donorID.split("\\(")[1].split("\\)")[0]);
-
-                    launchRowRemover("Donation", id1, id2);
-                }
-                else{
-                    message("Selección errónea", "No se ha seleccionado la donación a eliminar.", 3);
-                    System.out.println("User did not select a row from the table, future DonaRemover with search ability here.");
-                    ShowDonaRemove();
-                }
+                String resID = (String) DonaTable.getValueAt(selRow, 1);
+                int id1 = Integer.parseInt(resID.split("\\(")[1].split("\\)")[0]);
+                
+                String donorID = (String) DonaTable.getValueAt(selRow, 0);
+                int id2 = Integer.parseInt(donorID.split("\\(")[1].split("\\)")[0]);
+                
+                launchRowRemover("Donation", id1, id2);
             }
         });
         
@@ -1741,17 +1718,9 @@ public class MainW extends javax.swing.JFrame {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 DefaultTableModel tModel = (DefaultTableModel) SaleTable.getModel();
                 int selRow = SaleTable.getSelectedRow();
+                int id = (Integer) SaleTable.getValueAt(selRow, 0);
                 
-                if(selRow != -1){
-                    int id = (Integer) SaleTable.getValueAt(selRow, 0);
-
-                    launchRowRemover("Sale", id, 0);
-                }
-                else{
-                    message("Selección errónea", "No se ha seleccionado la venta a eliminar.", 3);
-                    System.out.println("User did not select a row from the table, future SaleRemover with search ability here.");
-                    ShowSaleRemove();
-                }
+                launchRowRemover("Sale", id, 0);
             }
         });
         
@@ -1886,7 +1855,6 @@ public class MainW extends javax.swing.JFrame {
                 }
                 else{
                     message("Selección errónea", "No se ha seleccionado el recurso a modificar.", 3);
-                    System.out.println("User did not select a row from the table, future ResModify with search ability here.");
                 }
             }
         });
@@ -1903,7 +1871,6 @@ public class MainW extends javax.swing.JFrame {
                 }
                 else{
                     message("Selección errónea", "No se ha seleccionado el donante a modificar.", 3);
-                    System.out.println("User did not select a row from the table, future DonorModify with search ability here.");
                 }
             }
         });
@@ -1926,7 +1893,6 @@ public class MainW extends javax.swing.JFrame {
                 }
                 else{
                     message("Selección errónea", "No se ha seleccionado la donación a modificar.", 3);
-                    System.out.println("User did not select a row from the table, future DonaModify with search ability here.");
                 }
             }
         });
@@ -1948,7 +1914,6 @@ public class MainW extends javax.swing.JFrame {
                 }
                 else{
                     message("Selección errónea", "No se ha seleccionado la venta a modificar.", 3);
-                    System.out.println("User did not select a row from the table, future SaleModify with search ability here.");
                 }
             }
         });
@@ -1967,7 +1932,6 @@ public class MainW extends javax.swing.JFrame {
                 }
                 else{
                     message("Selección errónea", "No se ha seleccionado el recurso a eliminar.", 3);
-                    System.out.println("User did not select a row from the table, future ResRemover with search ability here.");
                 }
             }
         });
@@ -1984,7 +1948,6 @@ public class MainW extends javax.swing.JFrame {
                 }
                 else{
                     message("Selección errónea", "No se ha seleccionado el donante a eliminar.", 3);
-                    System.out.println("User did not select a row from the table, future DonorRemover with search ability here.");
                 }
             }
         });
@@ -2007,7 +1970,6 @@ public class MainW extends javax.swing.JFrame {
                 }
                 else{
                     message("Selección errónea", "No se ha seleccionado la donación a eliminar.", 3);
-                    System.out.println("User did not select a row from the table, future DonaRemover with search ability here.");
                 }
             }
         });
@@ -2024,7 +1986,6 @@ public class MainW extends javax.swing.JFrame {
                 }
                 else{
                     message("Selección errónea", "No se ha seleccionado la venta a eliminar.", 3);
-                    System.out.println("User did not select a row from the table, future SaleRemover with search ability here.");
                 }
             }
         });
@@ -3202,6 +3163,8 @@ public class MainW extends javax.swing.JFrame {
         }
     }
     
+    
+    
     private void message(String titulo, String m, int tipo){
         int tipoerr;
         switch(tipo) {
@@ -3223,6 +3186,8 @@ public class MainW extends javax.swing.JFrame {
         
         JOptionPane.showMessageDialog(null, m, titulo, tipoerr);
     }
+    
+    
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
