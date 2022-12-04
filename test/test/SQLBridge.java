@@ -1,4 +1,4 @@
-package Main;
+package test;
 import java.sql.*;
 
 /**

@@ -20,7 +20,7 @@ public class MainW extends javax.swing.JFrame {
         initComponents();
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/img/6.png")));
         initListeners();
-        resetVisibility();
+        changeVisibility(false, 17, 1);
         
         bridge = new SQLBridge("cooperativa.db");
         bridge.startConnection();
@@ -44,6 +44,7 @@ public class MainW extends javax.swing.JFrame {
         ResTableModifyBut = new javax.swing.JButton();
         ResTableRemoveBut = new javax.swing.JButton();
         ResTableBackBut = new javax.swing.JButton();
+        ResTableNameSearchText = new javax.swing.JTextField();
         ResTableSeparator = new javax.swing.JSeparator();
         ResTableScrollPane = new javax.swing.JScrollPane();
         ResTable = new javax.swing.JTable();
@@ -92,8 +93,7 @@ public class MainW extends javax.swing.JFrame {
         DonorTableAddBut = new javax.swing.JButton();
         DonorTableModifyBut = new javax.swing.JButton();
         DonorTableRemoveBut = new javax.swing.JButton();
-        DonorTableIDSearchText = new javax.swing.JTextField();
-        DonorTableNomSearchText = new javax.swing.JTextField();
+        DonorTableNameSearchText = new javax.swing.JTextField();
         DonorTableBackBut = new javax.swing.JButton();
         DonorTableSeparator = new javax.swing.JSeparator();
         DonorTableScrollPane = new javax.swing.JScrollPane();
@@ -144,7 +144,7 @@ public class MainW extends javax.swing.JFrame {
         DonaTableModifyBut = new javax.swing.JButton();
         DonaTableRemoveBut = new javax.swing.JButton();
         DonaTableDonorSearchText = new javax.swing.JTextField();
-        DonaTableMaterialSearchText = new javax.swing.JTextField();
+        DonaTableResourceSearchText = new javax.swing.JTextField();
         DonaTableDateSearchText = new javax.swing.JTextField();
         DonaTableBackBut = new javax.swing.JButton();
         DonaTableSeparator = new javax.swing.JSeparator();
@@ -197,8 +197,8 @@ public class MainW extends javax.swing.JFrame {
         SaleTableAddBut = new javax.swing.JButton();
         SaleTableModifyBut = new javax.swing.JButton();
         SaleTableRemoveBut = new javax.swing.JButton();
-        SaleTableResourceSearchInput = new javax.swing.JTextField();
-        SaleTableFechaSearchInput = new javax.swing.JTextField();
+        SaleTableResourceSearchText = new javax.swing.JTextField();
+        SaleTableDateSearchText = new javax.swing.JTextField();
         SaleTableBackBut = new javax.swing.JButton();
         SaleTableSeparator = new javax.swing.JSeparator();
         SaleTableScrollPane = new javax.swing.JScrollPane();
@@ -302,6 +302,11 @@ public class MainW extends javax.swing.JFrame {
         ResTableBackBut.setText("Volver");
         ResTableLateralPanel.add(ResTableBackBut);
         ResTableBackBut.setBounds(0, 370, 120, 30);
+
+        ResTableNameSearchText.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        ResTableNameSearchText.setText("Nombre");
+        ResTableLateralPanel.add(ResTableNameSearchText);
+        ResTableNameSearchText.setBounds(0, 190, 120, 30);
 
         ResTablePane.add(ResTableLateralPanel);
         ResTableLateralPanel.setBounds(0, 0, 120, 425);
@@ -608,13 +613,10 @@ public class MainW extends javax.swing.JFrame {
     DonorTableLateralPanel.add(DonorTableRemoveBut);
     DonorTableRemoveBut.setBounds(0, 110, 120, 30);
 
-    DonorTableIDSearchText.setText("Nombre");
-    DonorTableLateralPanel.add(DonorTableIDSearchText);
-    DonorTableIDSearchText.setBounds(0, 190, 120, 30);
-
-    DonorTableNomSearchText.setText("Identificador");
-    DonorTableLateralPanel.add(DonorTableNomSearchText);
-    DonorTableNomSearchText.setBounds(0, 240, 120, 30);
+    DonorTableNameSearchText.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorTableNameSearchText.setText("Nombre");
+    DonorTableLateralPanel.add(DonorTableNameSearchText);
+    DonorTableNameSearchText.setBounds(0, 190, 120, 30);
 
     DonorTableBackBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
     DonorTableBackBut.setText("Volver");
@@ -924,10 +926,10 @@ public class MainW extends javax.swing.JFrame {
     DonaTableLateralPanel.add(DonaTableDonorSearchText);
     DonaTableDonorSearchText.setBounds(0, 190, 120, 30);
 
-    DonaTableMaterialSearchText.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    DonaTableMaterialSearchText.setText("Material");
-    DonaTableLateralPanel.add(DonaTableMaterialSearchText);
-    DonaTableMaterialSearchText.setBounds(0, 240, 120, 30);
+    DonaTableResourceSearchText.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaTableResourceSearchText.setText("Recurso");
+    DonaTableLateralPanel.add(DonaTableResourceSearchText);
+    DonaTableResourceSearchText.setBounds(0, 240, 120, 30);
 
     DonaTableDateSearchText.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
     DonaTableDateSearchText.setText("Fecha");
@@ -1235,15 +1237,15 @@ public class MainW extends javax.swing.JFrame {
     SaleTableLateralPanel.add(SaleTableRemoveBut);
     SaleTableRemoveBut.setBounds(0, 110, 120, 30);
 
-    SaleTableResourceSearchInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    SaleTableResourceSearchInput.setText("Material");
-    SaleTableLateralPanel.add(SaleTableResourceSearchInput);
-    SaleTableResourceSearchInput.setBounds(0, 190, 120, 30);
+    SaleTableResourceSearchText.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleTableResourceSearchText.setText("Material");
+    SaleTableLateralPanel.add(SaleTableResourceSearchText);
+    SaleTableResourceSearchText.setBounds(0, 190, 120, 30);
 
-    SaleTableFechaSearchInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    SaleTableFechaSearchInput.setText("Fecha");
-    SaleTableLateralPanel.add(SaleTableFechaSearchInput);
-    SaleTableFechaSearchInput.setBounds(0, 240, 120, 30);
+    SaleTableDateSearchText.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleTableDateSearchText.setText("Fecha");
+    SaleTableLateralPanel.add(SaleTableDateSearchText);
+    SaleTableDateSearchText.setBounds(0, 240, 120, 30);
 
     SaleTableBackBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
     SaleTableBackBut.setText("Volver");
@@ -1582,25 +1584,25 @@ public class MainW extends javax.swing.JFrame {
         //  them to be used by non-listener functions). 
         ResTableMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowResTable();
+                changeVisibility(false, 17, 2);
             }
         });
         
         DonorTableMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowDonorTable();
+                changeVisibility(false, 17, 6);
             }
         });
         
         DonaTableMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowDonaTable();
+                changeVisibility(false, 17, 10);
             }
         });
         
         SaleTableMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowSaleTable();
+                changeVisibility(false, 17, 14);
             }
         });
         
@@ -1608,7 +1610,7 @@ public class MainW extends javax.swing.JFrame {
         //  without the event as a parameter. 
         ResTableBackBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                resetVisibility();
+                changeVisibility(false, 2, 1);
             }
         });
         
@@ -1621,7 +1623,7 @@ public class MainW extends javax.swing.JFrame {
         ResTableModifyBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 ResModifyIDInput.disable();
-                ShowResModify();
+                changeVisibility(true, 2, 4);
             }
         });
         
@@ -1638,14 +1640,14 @@ public class MainW extends javax.swing.JFrame {
                 else{
                     message("Selección errónea", "No se ha seleccionado el recurso a eliminar.", 3);
                     System.out.println("User did not select a row from the table, future ResRemover with search ability here.");
-                    ShowResRemove();
+                    changeVisibility(true, 2, 5);
                 }
             }
         });
         
         DonorTableBackBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                resetVisibility();
+                changeVisibility(true, 6, 1);
             }
         });
         
@@ -1657,7 +1659,7 @@ public class MainW extends javax.swing.JFrame {
         
         DonorTableModifyBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowDonorModify();
+                changeVisibility(true, 6, 8);
             }
         });
         
@@ -1674,14 +1676,14 @@ public class MainW extends javax.swing.JFrame {
                 else{
                     message("Selección errónea", "No se ha seleccionado el donante a eliminar.", 3);
                     System.out.println("User did not select a row from the table, future DonorRemover with search ability here.");
-                    ShowDonorRemove();
+                    changeVisibility(true, 6, 9);
                 }
             }
         });
         
         DonaTableBackBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                resetVisibility();
+                changeVisibility(true, 10, 1);
             }
         });
         
@@ -1693,7 +1695,7 @@ public class MainW extends javax.swing.JFrame {
         
         DonaTableModifyBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowDonaModify();
+                changeVisibility(true, 10, 12);
             }
         });
         
@@ -1714,14 +1716,14 @@ public class MainW extends javax.swing.JFrame {
                 else{
                     message("Selección errónea", "No se ha seleccionado la donación a eliminar.", 3);
                     System.out.println("User did not select a row from the table, future DonaRemover with search ability here.");
-                    ShowDonaRemove();
+                    changeVisibility(true, 10, 13);
                 }
             }
         });
         
         SaleTableBackBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                resetVisibility();
+                changeVisibility(true, 14, 1);
             }
         });
         
@@ -1733,7 +1735,7 @@ public class MainW extends javax.swing.JFrame {
         
         SaleTableModifyBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowSaleModify();
+                changeVisibility(true, 14, 16);
             }
         });
         
@@ -1750,7 +1752,7 @@ public class MainW extends javax.swing.JFrame {
                 else{
                     message("Selección errónea", "No se ha seleccionado la venta a eliminar.", 3);
                     System.out.println("User did not select a row from the table, future SaleRemover with search ability here.");
-                    ShowSaleRemove();
+                    changeVisibility(true, 14, 17);
                 }
             }
         });
@@ -1759,91 +1761,73 @@ public class MainW extends javax.swing.JFrame {
         
         ResAddCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowResTable();
-                
-                ResAddIDInput.setText("");
-                ResAddNameInput.setText("");
-                ResAddStockInput.setText("");
+                changeVisibility(false, 3, 2);
             }
         });
         
         ResModifyCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowResTable();
+                changeVisibility(false, 4, 2);
             }
         });
         
         ResRemoveCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowResTable();
-            }
-        });
-        
-        DonaAddCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowDonaTable();
-                
-                DonaAddDonorInput.setText("");
-                DonaAddResourceInput.setText("");
-                DonaAddCuantityInput.setText("");
-                DonaAddPriceInput.setText("");
-            }
-        });
-        
-        DonaModifyCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowDonaTable();
-            }
-        });
-        
-        DonaRemoveCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowDonaTable();
+                changeVisibility(false, 5, 2);
             }
         });
         
         DonorAddCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowDonorTable();
-                
-                DonorAddIDInput.setText("");
-                DonorAddNameInput.setText("");
-                DonorAddRateInput.setText("");
+                changeVisibility(false, 11, 6);
             }
         });
         
         DonorModifyCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowDonorTable();
+                changeVisibility(false, 12, 6);
             }
         });
         
         DonorRemoveCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowDonorTable();
+                changeVisibility(false, 13, 6);
+            }
+        });
+        
+        DonaAddCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                changeVisibility(false, 7, 10);
+            }
+        });
+        
+        DonaModifyCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                changeVisibility(false, 8, 10);
+            }
+        });
+        
+        DonaRemoveCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                changeVisibility(false, 9, 10);
             }
         });
         
         SaleAddCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowSaleTable();
-                
-                SaleAddIDInput.setText("");
-                SaleAddResourceInput.setText("");
-                SaleAddCuantityInput.setText("");
-                SaleAddPriceInput.setText("");
+                changeVisibility(false, 15, 14);
             }
         });
         
         SaleModifyCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowSaleTable();
+                changeVisibility(false, 16, 14);
             }
         });
         
         SaleRemoveCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                ShowSaleTable();
+                changeVisibility(false, 17, 14);
             }
         });
         
@@ -2030,394 +2014,214 @@ public class MainW extends javax.swing.JFrame {
         });
     }
     
-    private void initVisibility(){
-        //Set visibility settings to not show any panel at the start of the app:
-        MainMenuPane.setVisible(true);
-        ResTablePane.setVisible(false);
-        ResAddPane.setVisible(false);
-        ResModifyPane.setVisible(false);
-        ResRemovePane.setVisible(false);
-        DonorTablePane.setVisible(false);
-        DonorAddPane.setVisible(false);
-        DonorModifyPane.setVisible(false);
-        DonorRemovePane.setVisible(false);
-        DonaTablePane.setVisible(false);
-        DonaAddPane.setVisible(false);
-        DonaModifyPane.setVisible(false);
-        DonaRemovePane.setVisible(false);
-        SaleTablePane.setVisible(false);
-        SaleAddPane.setVisible(false);
-        SaleModifyPane.setVisible(false);
-        SaleRemovePane.setVisible(false);
-    }
+    /*
+    List of Panes contained in the MainLayeredPane each number will correspond
+    to its respective Pane when used in the changeVisibility() function:
+        1 - MainMenuPane
+        2 - ResTablePane
+        3 - ResAddPane
+        4 - ResModifyPane
+        5 - ResRemovePane
+        6 - DonorTablePane
+        7 - DonorAddPane
+        8 - DonorModifyPane
+        9 - DonorRemovePane
+        10 - DonaTablePane
+        11 - DonaAddPane
+        12 - DonaModifyPane
+        13 - DonaRemovePane
+        14 - SaleTablePane
+        15 - SaleAddPane
+        16 - SaleModifyPane
+        17 - SaleRemovePane
+    */
+    public void changeVisibility(boolean del, int from, int to){
+        boolean[] panes = {false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false};
         
-    private void ShowResTable() {                              
-        //Set visibility settings to show the Resources Table:
-        MainMenuPane.setVisible(false);
-        ResTablePane.setVisible(true);
-        ResAddPane.setVisible(false);
-        ResModifyPane.setVisible(false);
-        ResRemovePane.setVisible(false);
-        DonorTablePane.setVisible(false);
-        DonorAddPane.setVisible(false);
-        DonorModifyPane.setVisible(false);
-        DonorRemovePane.setVisible(false);
-        DonaTablePane.setVisible(false);
-        DonaAddPane.setVisible(false);
-        DonaModifyPane.setVisible(false);
-        DonaRemovePane.setVisible(false);
-        SaleTablePane.setVisible(false);
-        SaleAddPane.setVisible(false);
-        SaleModifyPane.setVisible(false);
-        SaleRemovePane.setVisible(false);
+        //Remenber 'true'' means you want to delete the contents of the fields of 
+        //the origin pane.
+        if(del){
+            if(from > 2 || from < 17){
+                switch(from){
+                    case 2:
+                        ResTableNameSearchText.setText("Nombre");
+                        break;
+                    case 3:
+                        ResAddIDInput.setText("");
+                        ResAddNameInput.setText("");
+                        ResAddStockInput.setText("");
+                        break;
+                    case 4:
+                        ResModifyIDInput.setText("");
+                        ResModifyNameInput.setText("");
+                        ResModifyStockInput.setText("");
+                        break;
+                    case 5:
+                        ResRemoveIDInput.setText("");
+                        ResRemoveNameInput.setText("");
+                        ResRemoveStockInput.setText("");
+                        break;
+                    case 6:
+                        DonorTableNameSearchText.setText("Nombre");
+                        break;
+                    case 7:
+                        DonorAddIDInput.setText("");
+                        DonorAddNameInput.setText("");
+                        DonorAddRateInput.setText("");
+                        break;
+                    case 8:
+                        DonorModifyIDInput.setText("");
+                        DonorModifyNameInput.setText("");
+                        DonorModifyRateInput.setText("");
+                        break;
+                    case 9:
+                        DonorRemoveIDInput.setText("");
+                        DonorRemoveNameInput.setText("");
+                        DonorRemoveRateInput.setText("");
+                        break;
+                    case 10:
+                        DonaTableDonorSearchText.setText("Donante");
+                        DonaTableResourceSearchText.setText("Recurso");
+                        DonaTableDateSearchText.setText("Fecha");
+                        break;
+                    case 11:
+                        DonaAddDonorInput.setText("");
+                        DonaAddResourceInput.setText("");
+                        DonaAddCuantityInput.setText("");
+                        DonaAddPriceInput.setText("");
+                        break;
+                    case 12:
+                        DonaModifyDonorInput.setText("");
+                        DonaModifyResourceInput.setText("");
+                        DonaModifyCuantityInput.setText("");
+                        DonaModifyPriceInput.setText("");
+                        break;
+                    case 13:
+                        DonaRemoveDonorInput.setText("");
+                        DonaRemoveResourceInput.setText("");
+                        DonaRemoveCuantityInput.setText("");
+                        DonaRemovePriceInput.setText("");
+                        break;
+                    case 14:
+                        SaleTableResourceSearchText.setText("Recurso");
+                        SaleTableDateSearchText.setText("Fecha");
+                        break;
+                    case 15:
+                        SaleAddIDInput.setText("");
+                        SaleAddResourceInput.setText("");
+                        SaleAddCuantityInput.setText("");
+                        SaleAddPriceInput.setText("");
+                        break;
+                    case 16:
+                        SaleModifyIDInput.setText("");
+                        SaleModifyResourceInput.setText("");
+                        SaleModifyCuantityInput.setText("");
+                        SaleModifyPriceInput.setText("");
+                        break;
+                    case 17:
+                        SaleRemoveIDInput.setText("");
+                        SaleRemoveResourceInput.setText("");
+                        SaleRemoveCuantityInput.setText("");
+                        SaleRemovePriceInput.setText("");
+                        break;
+                    default:
+                        System.out.println("The program somehow (and yes, I'm talking about you, deadass developer) managed to fuck this up and completely bypass the previous out of bounds check");
+                        break;
+                }
+            }
+            else{
+                message("Error interno", "Ha ocurrido un error durante la carga de gráficos.\n(El código de ventana introducido no es correcto.)", 1);
+                System.out.println("The function hasn't been passed a correct origin parameter.");
+            }
+        }
         
-        tableMaker("Resource");
-    }
-    
-    private void ShowResAdd() {                            
-        // Set visibility settings to show the panel to add Resources:
-        MainMenuPane.setVisible(false);
-        ResTablePane.setVisible(false);
-        ResAddPane.setVisible(true);
-        ResModifyPane.setVisible(false);
-        ResRemovePane.setVisible(false);
-        DonorTablePane.setVisible(false);
-        DonorAddPane.setVisible(false);
-        DonorModifyPane.setVisible(false);
-        DonorRemovePane.setVisible(false);
-        DonaTablePane.setVisible(false);
-        DonaAddPane.setVisible(false);
-        DonaModifyPane.setVisible(false);
-        DonaRemovePane.setVisible(false);
-        SaleTablePane.setVisible(false);
-        SaleAddPane.setVisible(false);
-        SaleModifyPane.setVisible(false);
-        SaleRemovePane.setVisible(false);
-    }
-    
-    private void ShowResModify() {                               
-        // Set visibility settings to show the panel to modify Resources:
-        MainMenuPane.setVisible(false);
-        ResTablePane.setVisible(false);
-        ResAddPane.setVisible(false);
-        ResModifyPane.setVisible(true);
-        ResRemovePane.setVisible(false);
-        DonorTablePane.setVisible(false);
-        DonorAddPane.setVisible(false);
-        DonorModifyPane.setVisible(false);
-        DonorRemovePane.setVisible(false);
-        DonaTablePane.setVisible(false);
-        DonaAddPane.setVisible(false);
-        DonaModifyPane.setVisible(false);
-        DonaRemovePane.setVisible(false);
-        SaleTablePane.setVisible(false);
-        SaleAddPane.setVisible(false);
-        SaleModifyPane.setVisible(false);
-        SaleRemovePane.setVisible(false);
-    }
-    
-    private void ShowResRemove() {                               
-        // Set visibility settings to show the panel to remove Resources:
-        MainMenuPane.setVisible(false);
-        ResTablePane.setVisible(false);
-        ResAddPane.setVisible(false);
-        ResModifyPane.setVisible(false);
-        ResRemovePane.setVisible(true);
-        DonorTablePane.setVisible(false);
-        DonorAddPane.setVisible(false);
-        DonorModifyPane.setVisible(false);
-        DonorRemovePane.setVisible(false);
-        DonaTablePane.setVisible(false);
-        DonaAddPane.setVisible(false);
-        DonaModifyPane.setVisible(false);
-        DonaRemovePane.setVisible(false);
-        SaleTablePane.setVisible(false);
-        SaleAddPane.setVisible(false);
-        SaleModifyPane.setVisible(false);
-        SaleRemovePane.setVisible(false);
-    }
-    
-    private void ShowDonorTable() {                                
-        //Set visibility settings to show the Donor Table:
-        MainMenuPane.setVisible(false);
-        ResTablePane.setVisible(false);
-        ResAddPane.setVisible(false);
-        ResModifyPane.setVisible(false);
-        ResRemovePane.setVisible(false);
-        DonorTablePane.setVisible(true);
-        DonorAddPane.setVisible(false);
-        DonorModifyPane.setVisible(false);
-        DonorRemovePane.setVisible(false);
-        DonaTablePane.setVisible(false);
-        DonaAddPane.setVisible(false);
-        DonaModifyPane.setVisible(false);
-        DonaRemovePane.setVisible(false);
-        SaleTablePane.setVisible(false);
-        SaleAddPane.setVisible(false);
-        SaleModifyPane.setVisible(false);
-        SaleRemovePane.setVisible(false);
+        if(to > 1 || to < 17){
+            switch(to){
+                    case 1:
+                        panes[0] = true;
+                        break;
+                    case 2:
+                        panes[1] = true;
+                        tableMaker("Resource");
+                        break;
+                    case 3:
+                        panes[2] = true;
+                        break;
+                    case 4:
+                        panes[3] = true;
+                        break;
+                    case 5:
+                        panes[4] = true;
+                        break;
+                    case 6:
+                        panes[5] = true;
+                        tableMaker("Donor");
+                        break;
+                    case 7:
+                        panes[6] = true;
+                        break;
+                    case 8:
+                        panes[7] = true;
+                        break;
+                    case 9:
+                        panes[8] = true;
+                        break;
+                    case 10:
+                        panes[9] = true;
+                        tableMaker("Donation");
+                        break;
+                    case 11:
+                        panes[10] = true;
+                        break;
+                    case 12:
+                        panes[11] = true;
+                        break;
+                    case 13:
+                        panes[12] = true;
+                        break;
+                    case 14:
+                        panes[13] = true;
+                        tableMaker("Sale");
+                        break;
+                    case 15:
+                        panes[14] = true;
+                        break;
+                    case 16:
+                        panes[15] = true;
+                        break;
+                    case 17:
+                        panes[16] = true;
+                        break;
+                    default:
+                        System.out.println("And again, you managed to get this message. How?");
+                        break;
+                }
                 
-        tableMaker("Donor");
-    }
-    
-    private void ShowDonorAdd() {                              
-        // Set visibility settings to show the panel to add Donors:
-        MainMenuPane.setVisible(false);
-        ResTablePane.setVisible(false);
-        ResAddPane.setVisible(false);
-        ResModifyPane.setVisible(false);
-        ResRemovePane.setVisible(false);
-        DonorTablePane.setVisible(false);
-        DonorAddPane.setVisible(true);
-        DonorModifyPane.setVisible(false);
-        DonorRemovePane.setVisible(false);
-        DonaTablePane.setVisible(false);
-        DonaAddPane.setVisible(false);
-        DonaModifyPane.setVisible(false);
-        DonaRemovePane.setVisible(false);
-        SaleTablePane.setVisible(false);
-        SaleAddPane.setVisible(false);
-        SaleModifyPane.setVisible(false);
-        SaleRemovePane.setVisible(false);
-    }
-    
-    private void ShowDonorModify() {                                 
-        // Set visibility settings to show the panel to modify Donors:
-        MainMenuPane.setVisible(false);
-        ResTablePane.setVisible(false);
-        ResAddPane.setVisible(false);
-        ResModifyPane.setVisible(false);
-        ResRemovePane.setVisible(false);
-        DonorTablePane.setVisible(false);
-        DonorAddPane.setVisible(false);
-        DonorModifyPane.setVisible(true);
-        DonorRemovePane.setVisible(false);
-        DonaTablePane.setVisible(false);
-        DonaAddPane.setVisible(false);
-        DonaModifyPane.setVisible(false);
-        DonaRemovePane.setVisible(false);
-        SaleTablePane.setVisible(false);
-        SaleAddPane.setVisible(false);
-        SaleModifyPane.setVisible(false);
-        SaleRemovePane.setVisible(false);
-    }
-    
-    private void ShowDonorRemove() {                                 
-        // Set visibility settings to show the panel to remove Donors:
-        MainMenuPane.setVisible(false);
-        ResTablePane.setVisible(false);
-        ResAddPane.setVisible(false);
-        ResModifyPane.setVisible(false);
-        ResRemovePane.setVisible(false);
-        DonorTablePane.setVisible(false);
-        DonorAddPane.setVisible(false);
-        DonorModifyPane.setVisible(false);
-        DonorRemovePane.setVisible(true);
-        DonaTablePane.setVisible(false);
-        DonaAddPane.setVisible(false);
-        DonaModifyPane.setVisible(false);
-        DonaRemovePane.setVisible(false);
-        SaleTablePane.setVisible(false);
-        SaleAddPane.setVisible(false);
-        SaleModifyPane.setVisible(false);
-        SaleRemovePane.setVisible(false);
-    }
-    
-    private void ShowDonaTable() {                               
-        //Set visibility settings to show the Donation Table:
-        MainMenuPane.setVisible(false);
-        ResTablePane.setVisible(false);
-        ResAddPane.setVisible(false);
-        ResModifyPane.setVisible(false);
-        ResRemovePane.setVisible(false);
-        DonorTablePane.setVisible(false);
-        DonorAddPane.setVisible(false);
-        DonorModifyPane.setVisible(false);
-        DonorRemovePane.setVisible(false);
-        DonaTablePane.setVisible(true);
-        DonaAddPane.setVisible(false);
-        DonaModifyPane.setVisible(false);
-        DonaRemovePane.setVisible(false);
-        SaleTablePane.setVisible(false);
-        SaleAddPane.setVisible(false);
-        SaleModifyPane.setVisible(false);
-        SaleRemovePane.setVisible(false);
-        
-        tableMaker("Donation");
-    }
-    
-    private void ShowDonaAdd() {                             
-        // Set visibility settings to show the panel to add Donations:
-        MainMenuPane.setVisible(false);
-        ResTablePane.setVisible(false);
-        ResAddPane.setVisible(false);
-        ResModifyPane.setVisible(false);
-        ResRemovePane.setVisible(false);
-        DonorTablePane.setVisible(false);
-        DonorAddPane.setVisible(false);
-        DonorModifyPane.setVisible(false);
-        DonorRemovePane.setVisible(false);
-        DonaTablePane.setVisible(false);
-        DonaAddPane.setVisible(true);
-        DonaModifyPane.setVisible(false);
-        DonaRemovePane.setVisible(false);
-        SaleTablePane.setVisible(false);
-        SaleAddPane.setVisible(false);
-        SaleModifyPane.setVisible(false);
-        SaleRemovePane.setVisible(false);
-    }
-    
-    private void ShowDonaModify() {                                
-        // Set visibility settings to show the panel to modify Donations:
-        MainMenuPane.setVisible(false);
-        ResTablePane.setVisible(false);
-        ResAddPane.setVisible(false);
-        ResModifyPane.setVisible(false);
-        ResRemovePane.setVisible(false);
-        DonorTablePane.setVisible(false);
-        DonorAddPane.setVisible(false);
-        DonorModifyPane.setVisible(false);
-        DonorRemovePane.setVisible(false);
-        DonaTablePane.setVisible(false);
-        DonaAddPane.setVisible(false);
-        DonaModifyPane.setVisible(true);
-        DonaRemovePane.setVisible(false);
-        SaleTablePane.setVisible(false);
-        SaleAddPane.setVisible(false);
-        SaleModifyPane.setVisible(false);
-        SaleRemovePane.setVisible(false);
-    }
-    
-    private void ShowDonaRemove() {                                
-        // Set visibility settings to show the panel to remove Donations:
-        MainMenuPane.setVisible(false);
-        ResTablePane.setVisible(false);
-        ResAddPane.setVisible(false);
-        ResModifyPane.setVisible(false);
-        ResRemovePane.setVisible(false);
-        DonorTablePane.setVisible(false);
-        DonorAddPane.setVisible(false);
-        DonorModifyPane.setVisible(false);
-        DonorRemovePane.setVisible(false);
-        DonaTablePane.setVisible(false);
-        DonaAddPane.setVisible(false);
-        DonaModifyPane.setVisible(false);
-        DonaRemovePane.setVisible(true);
-        SaleTablePane.setVisible(false);
-        SaleAddPane.setVisible(false);
-        SaleModifyPane.setVisible(false);
-        SaleRemovePane.setVisible(false);
-    }
-    
-    private void ShowSaleTable() {                               
-        //Set visibility settings to show the Sales Table:
-        MainMenuPane.setVisible(false);
-        ResTablePane.setVisible(false);
-        ResAddPane.setVisible(false);
-        ResModifyPane.setVisible(false);
-        ResRemovePane.setVisible(false);
-        DonorTablePane.setVisible(false);
-        DonorAddPane.setVisible(false);
-        DonorModifyPane.setVisible(false);
-        DonorRemovePane.setVisible(false);
-        DonaTablePane.setVisible(false);
-        DonaAddPane.setVisible(false);
-        DonaModifyPane.setVisible(false);
-        DonaRemovePane.setVisible(false);
-        SaleTablePane.setVisible(true);
-        SaleAddPane.setVisible(false);
-        SaleModifyPane.setVisible(false);
-        SaleRemovePane.setVisible(false);
-        
-        tableMaker("Sale");
-    }
-    
-    private void ShowSaleAdd() {                             
-        // Set visibility settings to show the panel to add Sales:
-        MainMenuPane.setVisible(false);
-        ResTablePane.setVisible(false);
-        ResAddPane.setVisible(false);
-        ResModifyPane.setVisible(false);
-        ResRemovePane.setVisible(false);
-        DonorTablePane.setVisible(false);
-        DonorAddPane.setVisible(false);
-        DonorModifyPane.setVisible(false);
-        DonorRemovePane.setVisible(false);
-        DonaTablePane.setVisible(false);
-        DonaAddPane.setVisible(false);
-        DonaModifyPane.setVisible(false);
-        DonaRemovePane.setVisible(false);
-        SaleTablePane.setVisible(false);
-        SaleAddPane.setVisible(true);
-        SaleModifyPane.setVisible(false);
-        SaleRemovePane.setVisible(false);
-    }
-    
-    private void ShowSaleModify() {                                
-        // Set visibility settings to show the panel to modify Sales:
-        MainMenuPane.setVisible(false);
-        ResTablePane.setVisible(false);
-        ResAddPane.setVisible(false);
-        ResModifyPane.setVisible(false);
-        ResRemovePane.setVisible(false);
-        DonorTablePane.setVisible(false);
-        DonorAddPane.setVisible(false);
-        DonorModifyPane.setVisible(false);
-        DonorRemovePane.setVisible(false);
-        DonaTablePane.setVisible(false);
-        DonaAddPane.setVisible(false);
-        DonaModifyPane.setVisible(false);
-        DonaRemovePane.setVisible(false);
-        SaleTablePane.setVisible(false);
-        SaleAddPane.setVisible(false);
-        SaleModifyPane.setVisible(true);
-        SaleRemovePane.setVisible(false);
-    }
-    
-    private void ShowSaleRemove() {                                
-        // Set visibility settings to show the panel to remove Sales:
-        MainMenuPane.setVisible(false);
-        ResTablePane.setVisible(false);
-        ResAddPane.setVisible(false);
-        ResModifyPane.setVisible(false);
-        ResRemovePane.setVisible(false);
-        DonorTablePane.setVisible(false);
-        DonorAddPane.setVisible(false);
-        DonorModifyPane.setVisible(false);
-        DonorRemovePane.setVisible(false);
-        DonaTablePane.setVisible(false);
-        DonaAddPane.setVisible(false);
-        DonaModifyPane.setVisible(false);
-        DonaRemovePane.setVisible(false);
-        SaleTablePane.setVisible(false);
-        SaleAddPane.setVisible(false);
-        SaleModifyPane.setVisible(false);
-        SaleRemovePane.setVisible(true);
-    }
-    
-    private void resetVisibility() {                                 
-        // Reset visibility settings to not show any panel:
-        MainMenuPane.setVisible(true);
-        ResTablePane.setVisible(false);
-        ResAddPane.setVisible(false);
-        ResModifyPane.setVisible(false);
-        ResRemovePane.setVisible(false);
-        DonorTablePane.setVisible(false);
-        DonorAddPane.setVisible(false);
-        DonorModifyPane.setVisible(false);
-        DonorRemovePane.setVisible(false);
-        DonaTablePane.setVisible(false);
-        DonaAddPane.setVisible(false);
-        DonaModifyPane.setVisible(false);
-        DonaRemovePane.setVisible(false);
-        SaleTablePane.setVisible(false);
-        SaleAddPane.setVisible(false);
-        SaleModifyPane.setVisible(false);
-        SaleRemovePane.setVisible(false);
+                MainMenuPane.setVisible(panes[0]);
+                ResTablePane.setVisible(panes[1]);
+                ResAddPane.setVisible(panes[2]);
+                ResModifyPane.setVisible(panes[3]);
+                ResRemovePane.setVisible(panes[4]);
+                DonorTablePane.setVisible(panes[5]);
+                DonorAddPane.setVisible(panes[6]);
+                DonorModifyPane.setVisible(panes[7]);
+                DonorRemovePane.setVisible(panes[8]);
+                DonaTablePane.setVisible(panes[9]);
+                DonaAddPane.setVisible(panes[10]);
+                DonaModifyPane.setVisible(panes[11]);
+                DonaRemovePane.setVisible(panes[12]);
+                SaleTablePane.setVisible(panes[13]);
+                SaleAddPane.setVisible(panes[14]);
+                SaleModifyPane.setVisible(panes[15]);
+                SaleRemovePane.setVisible(panes[16]);
+        }
+        else{
+            message("Error interno", "Ha ocurrido un error durante la carga de gráficos.\n(El código de ventana introducido no es correcto.)", 1);
+            System.out.println("The function hasn't been passed a correct origin parameter.");
+        }
     }
     
     
-      
     private void tableMaker(String tableName){
         //Method to detect, list and show the data contained in each of the DB tables.
         DefaultTableModel tModel;
@@ -2555,7 +2359,7 @@ public class MainW extends javax.swing.JFrame {
                     
                     ResAddIDInput.setText("" + newID);
                     ResAddIDInput.disable();
-                    ShowResAdd();
+                    changeVisibility(true, 2, 3);
                     break;
                 case "Donor":
                     res = bridge.querier.executeQuery("SELECT MAX(ID) FROM Donor");
@@ -2563,10 +2367,10 @@ public class MainW extends javax.swing.JFrame {
                     
                     DonorAddIDInput.setText("" + newID);
                     DonorAddIDInput.disable();
-                    ShowDonorAdd();
+                    changeVisibility(true, 6, 7);
                     break;
                 case "Donation":
-                    ShowDonaAdd();
+                    changeVisibility(true, 10, 11);
                     break;
                 case "Sale":
                     res = bridge.querier.executeQuery("SELECT MAX(ID) FROM Sale");
@@ -2574,10 +2378,10 @@ public class MainW extends javax.swing.JFrame {
                     
                     SaleAddIDInput.setText("" + newID);
                     SaleAddIDInput.disable();
-                    ShowSaleAdd();
+                    changeVisibility(true, 14, 15);
                     break;
                 default:
-                    
+                    message("Error interno", "Un valor desconfigurado ha provocado un error.\n(No se ha especificado la tabla a controlar.)", 1);
                     break;
             }
         }
@@ -2600,7 +2404,7 @@ public class MainW extends javax.swing.JFrame {
                     ResModifyNameInput.setText(res.getString(2));
                     ResModifyStockInput.setText(Long.toString(res.getLong(3)) );
                     
-                    ShowResModify();
+                    changeVisibility(true, 2, 4);
                     break;
                 case "Donor":
                     res = bridge.querier.executeQuery("SELECT * FROM Donor WHERE ID = " + id);
@@ -2610,7 +2414,7 @@ public class MainW extends javax.swing.JFrame {
                     DonorModifyNameInput.setText(res.getString(2));
                     DonorModifyRateInput.setText(Double.toString( res.getDouble(3) * 100));
                     
-                    ShowDonorModify();
+                    changeVisibility(true, 6, 8);
                     break;
                 case "Donation":
                     res = bridge.querier.executeQuery("SELECT * FROM Donation WHERE donorID = " + id + " AND resID = " + id2);
@@ -2620,7 +2424,7 @@ public class MainW extends javax.swing.JFrame {
                     DonaModifyCuantityInput.setText(Long.toString( res.getLong(1) ));
                     DonaModifyPriceInput.setText(Integer.toString( res.getInt(2) ));
                     
-                    ShowDonaModify();
+                    changeVisibility(true, 10, 12);
                     break;
                 case "Sale":
                     res = bridge.querier.executeQuery("SELECT * FROM Sale WHERE ID = " + id);
@@ -2631,7 +2435,7 @@ public class MainW extends javax.swing.JFrame {
                     SaleModifyCuantityInput.setText(Long.toString( res.getLong(2) ));
                     SaleModifyPriceInput.setText(Integer.toString( res.getInt(3) ));
                     
-                    ShowSaleModify();
+                    changeVisibility(true, 14, 16);
                     break;
                 default:
                     this.message("Información", "No se ha especificado una tabla que editar.", 1);
@@ -2660,7 +2464,7 @@ public class MainW extends javax.swing.JFrame {
                     ResRemoveNameInput.disable();
                     ResRemoveStockInput.disable();
                     
-                    ShowResRemove();
+                    changeVisibility(true, 2, 5);
                     break;
                 case "Donor":
                     res = bridge.querier.executeQuery("SELECT * FROM Donor WHERE ID = " + id);
@@ -2673,7 +2477,7 @@ public class MainW extends javax.swing.JFrame {
                     DonorRemoveNameInput.disable();
                     DonorRemoveRateInput.disable();
                     
-                    ShowDonorRemove();
+                    changeVisibility(true, 6, 9);
                     break;
                 case "Donation":
                     res = bridge.querier.executeQuery("SELECT * FROM Donation WHERE donorID = " + id + " AND resID = " + id2);
@@ -2688,7 +2492,7 @@ public class MainW extends javax.swing.JFrame {
                     DonaRemoveCuantityInput.disable();
                     DonaRemovePriceInput.disable();
                     
-                    ShowDonaRemove();
+                    changeVisibility(true, 10, 13);
                     break;
                 case "Sale":
                     res = bridge.querier.executeQuery("SELECT * FROM Sale WHERE ID = " + id);
@@ -2703,7 +2507,7 @@ public class MainW extends javax.swing.JFrame {
                     SaleRemoveCuantityInput.disable();
                     SaleRemovePriceInput.disable();
                     
-                    ShowSaleRemove();
+                    changeVisibility(true, 14, 17);
                     break;
                 default:
                     this.message("Información", "No se ha especificado una tabla que editar.", 1);
@@ -2771,10 +2575,6 @@ public class MainW extends javax.swing.JFrame {
                         omit = true;
                         break;
                     }
-                    
-                    ResAddIDInput.setText("");
-                    ResAddNameInput.setText("");
-                    ResAddStockInput.setText("");
                     break;
                 case "Donor":
                     id = Integer.parseInt(DonorAddIDInput.getText());
@@ -2794,10 +2594,6 @@ public class MainW extends javax.swing.JFrame {
                         this.message("Información","Error SQL: " + sqle.getMessage(),1);
                         sqle.printStackTrace();
                     }
-                    
-                    DonorAddIDInput.setText("");
-                    DonorAddNameInput.setText("");
-                    DonorAddRateInput.setText("");
                     break;
                 case "Donation":
                     donor = Integer.parseInt(DonaAddDonorInput.getText());
@@ -2826,11 +2622,6 @@ public class MainW extends javax.swing.JFrame {
                         this.message("Información","Error SQL: " + sqle.getMessage(),1);
                         sqle.printStackTrace();
                     }
-                    
-                    DonaAddDonorInput.setText("");
-                    DonaAddResourceInput.setText("");
-                    DonaAddCuantityInput.setText("");
-                    DonaAddPriceInput.setText("");
                     break;
                 case "Sale":
                     id = Integer.parseInt(SaleAddIDInput.getText());
@@ -2856,11 +2647,6 @@ public class MainW extends javax.swing.JFrame {
                         this.message("Información","Error SQL: " + sqle.getMessage(),1);
                         sqle.printStackTrace();
                     }
-                    
-                    SaleAddIDInput.setText("");
-                    SaleAddResourceInput.setText("");
-                    SaleAddCuantityInput.setText("");
-                    SaleAddPriceInput.setText("");
                     break;
                 default:
                     this.message("Error", "Error: El programa no ha podido indicar que tabla ha de ser modificada", 1);
@@ -2880,19 +2666,19 @@ public class MainW extends javax.swing.JFrame {
                 
                 switch(tableName){
                     case "Resource":
-                        ShowResTable();
+                        changeVisibility(true, 3, 2);
                         break;
                     case "Donor":
-                        ShowDonorTable();
+                        changeVisibility(true, 7, 6);
                         break;
                     case "Donation":
-                        ShowDonaTable();
+                        changeVisibility(true, 11, 10);
                         break;
                     case "Sale":
-                        ShowSaleTable();
+                        changeVisibility(true, 15, 14);
                         break;
                     default:
-                        resetVisibility();
+                        changeVisibility(false, 17, 1);
                         break;
                 }
             }
@@ -2954,10 +2740,6 @@ public class MainW extends javax.swing.JFrame {
                             this.message("Información","Error SQL: " + sqle.getMessage(),1);
                             sqle.printStackTrace();
                         }
-                        
-                        ResModifyIDInput.setText("");
-                        ResModifyNameInput.setText("");
-                        ResModifyStockInput.setText("");
                     }
                     catch(NumberFormatException nfe){
                         this.message("Información incorrecta", "Uno o varios de los campos no contienen los datos correctos.", 3);
@@ -2997,10 +2779,6 @@ public class MainW extends javax.swing.JFrame {
                             this.message("Información","Error SQL: " + sqle.getMessage(),1);
                             sqle.printStackTrace();
                         }
-                        
-                        DonorModifyIDInput.setText("");
-                        DonorModifyNameInput.setText("");
-                        DonorModifyRateInput.setText("");
                     }
                     catch(NumberFormatException nfe){
                         this.message("Información incorrecta", "Uno o varios de los campos no contienen los datos correctos.", 1);
@@ -3086,19 +2864,19 @@ public class MainW extends javax.swing.JFrame {
 
                 switch(tableName){
                     case "Resource":
-                        ShowResTable();
+                        changeVisibility(true, 4, 2);
                         break;
                     case "Donor":
-                        ShowDonorTable();
+                        changeVisibility(true, 8, 6);
                         break;
                     case "Donation":
-                        ShowDonaTable();
+                        changeVisibility(true, 12, 10);
                         break;
                     case "Sale":
-                        ShowSaleTable();
+                        changeVisibility(true, 16, 14);
                         break;
                     default:
-                        resetVisibility();
+                        changeVisibility(false, 17, 1);
                         break;
                 }
             }
@@ -3178,19 +2956,19 @@ public class MainW extends javax.swing.JFrame {
             
             switch(tableName){
                 case "Resource":
-                    ShowResTable();
+                    changeVisibility(true, 5, 2);
                     break;
                 case "Donor":
-                    ShowDonorTable();
+                    changeVisibility(true, 9, 6);
                     break;
                 case "Donation":
-                    ShowDonaTable();
+                    changeVisibility(true, 13, 9);
                     break;
                 case "Sale":
-                    ShowSaleTable();
+                    changeVisibility(true, 17, 14);
                     break;
                 default:
-                    resetVisibility();
+                    changeVisibility(false, 17, 1);
                     break;
             }
         }
@@ -3317,11 +3095,11 @@ public class MainW extends javax.swing.JFrame {
     private javax.swing.JTextField DonaTableDateSearchText;
     private javax.swing.JTextField DonaTableDonorSearchText;
     private javax.swing.JPanel DonaTableLateralPanel;
-    private javax.swing.JTextField DonaTableMaterialSearchText;
     private javax.swing.JMenu DonaTableMenu;
     private javax.swing.JButton DonaTableModifyBut;
     private javax.swing.JPanel DonaTablePane;
     private javax.swing.JButton DonaTableRemoveBut;
+    private javax.swing.JTextField DonaTableResourceSearchText;
     private javax.swing.JScrollPane DonaTableScrollPane;
     private javax.swing.JSeparator DonaTableSeparator;
     private javax.swing.JButton DonorAddCancelBut;
@@ -3367,11 +3145,10 @@ public class MainW extends javax.swing.JFrame {
     private javax.swing.JTable DonorTable;
     private javax.swing.JButton DonorTableAddBut;
     private javax.swing.JButton DonorTableBackBut;
-    private javax.swing.JTextField DonorTableIDSearchText;
     private javax.swing.JPanel DonorTableLateralPanel;
     private javax.swing.JMenu DonorTableMenu;
     private javax.swing.JButton DonorTableModifyBut;
-    private javax.swing.JTextField DonorTableNomSearchText;
+    private javax.swing.JTextField DonorTableNameSearchText;
     private javax.swing.JPanel DonorTablePane;
     private javax.swing.JButton DonorTableRemoveBut;
     private javax.swing.JScrollPane DonorTableScrollPane;
@@ -3426,6 +3203,7 @@ public class MainW extends javax.swing.JFrame {
     private javax.swing.JPanel ResTableLateralPanel;
     private javax.swing.JMenu ResTableMenu;
     private javax.swing.JButton ResTableModifyBut;
+    private javax.swing.JTextField ResTableNameSearchText;
     private javax.swing.JPanel ResTablePane;
     private javax.swing.JButton ResTableRemoveBut;
     private javax.swing.JScrollPane ResTableScrollPane;
@@ -3475,13 +3253,13 @@ public class MainW extends javax.swing.JFrame {
     private javax.swing.JTable SaleTable;
     private javax.swing.JButton SaleTableAddBut;
     private javax.swing.JButton SaleTableBackBut;
-    private javax.swing.JTextField SaleTableFechaSearchInput;
+    private javax.swing.JTextField SaleTableDateSearchText;
     private javax.swing.JPanel SaleTableLateralPanel;
     private javax.swing.JMenu SaleTableMenu;
     private javax.swing.JButton SaleTableModifyBut;
     private javax.swing.JPanel SaleTablePane;
     private javax.swing.JButton SaleTableRemoveBut;
-    private javax.swing.JTextField SaleTableResourceSearchInput;
+    private javax.swing.JTextField SaleTableResourceSearchText;
     private javax.swing.JScrollPane SaleTableScrollPane;
     private javax.swing.JSeparator SaleTableSeparator;
     // End of variables declaration//GEN-END:variables
