@@ -1773,7 +1773,7 @@ public class MainW extends javax.swing.JFrame {
         
         ResRemoveCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(false, 5, 2);
+                changeVisibility(true, 5, 2);
             }
         });
         
@@ -1782,7 +1782,7 @@ public class MainW extends javax.swing.JFrame {
                 changeVisibility(false, 11, 6);
             }
         });
-        
+         
         DonorModifyCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 changeVisibility(false, 12, 6);
@@ -1791,7 +1791,7 @@ public class MainW extends javax.swing.JFrame {
         
         DonorRemoveCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(false, 13, 6);
+                changeVisibility(true, 13, 6);
             }
         });
         
@@ -1809,7 +1809,7 @@ public class MainW extends javax.swing.JFrame {
         
         DonaRemoveCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(false, 9, 10);
+                changeVisibility(true, 9, 10);
             }
         });
         
@@ -1827,7 +1827,7 @@ public class MainW extends javax.swing.JFrame {
         
         SaleRemoveCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(false, 17, 14);
+                changeVisibility(true, 17, 14);
             }
         });
         
@@ -2221,7 +2221,6 @@ public class MainW extends javax.swing.JFrame {
         }
     }
     
-    
     private void tableMaker(String tableName){
         //Method to detect, list and show the data contained in each of the DB tables.
         DefaultTableModel tModel;
@@ -2450,6 +2449,7 @@ public class MainW extends javax.swing.JFrame {
     
     private void launchRowRemover(String tableName, int id, int id2){
         try{
+            System.out.println("puto resultset");
             ResultSet res;
             
             switch(tableName){
@@ -2577,75 +2577,126 @@ public class MainW extends javax.swing.JFrame {
                     }
                     break;
                 case "Donor":
-                    id = Integer.parseInt(DonorAddIDInput.getText());
-                    name = DonorAddNameInput.getText();
-                    rate = Double.parseDouble(DonorAddRateInput.getText()) / 100;
-                    System.out.println("User wants to insert a new Donor with ID " + id + ", named " + name + " and with a sales rate of " + rate);
+                    if(DonorAddIDInput.getText().equals("") || DonorAddNameInput.getText().equals("") || DonorAddRateInput.getText().equals("")){
+                        this.message("Información incorrecta","Uno o varios de los campos están vacíos.",3);
+                        System.out.println("User introduced blank fields, aborting operation.");
+                        omit = true;
+                        break;
+                    }
                     
                     try{
-                        insertSta = bridge.conn.prepareStatement("INSERT INTO Donor VALUES(?, ?, ?)");
-                        insertSta.setInt(1, id);
-                        insertSta.setString(2, name);
-                        insertSta.setDouble(3, rate);
+                        id = Integer.parseInt(DonorAddIDInput.getText());
+                        name = DonorAddNameInput.getText();
+                        rate = Double.parseDouble(DonorAddRateInput.getText()) / 100;
+                        System.out.println("User wants to insert a new Donor with ID " + id + ", named " + name + " and with a sales rate of " + rate);
                         
-                        exec = insertSta.executeUpdate();
+                        if(rate > 1 || rate < 0.001){
+                            this.message("Información incorrecta","Se ha introducido una tasa inválida,\nindique un valor entre 0.1 y 100 por ciento.",3);
+                        System.out.println("User introduced an invalid rate value, aborting operation.");
+                            omit = true;
+                            break;
+                        }
+
+                        try{
+                            insertSta = bridge.conn.prepareStatement("INSERT INTO Donor VALUES(?, ?, ?)");
+                            insertSta.setInt(1, id);
+                            insertSta.setString(2, name);
+                            insertSta.setDouble(3, rate);
+
+                            exec = insertSta.executeUpdate();
+                        }
+                        catch(SQLException sqle) {
+                            this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                            sqle.printStackTrace();
+                        }
                     }
-                    catch(SQLException sqle) {
-                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
-                        sqle.printStackTrace();
+                    catch(NumberFormatException nfe){
+                        this.message("Información incorrecta", "Uno o varios de los campos no contienen los datos correctos.", 1);
+                        System.out.println("Wrong data types introduced, aborting operation.");
+                        omit = true;
+                        break;
                     }
                     break;
                 case "Donation":
-                    donor = Integer.parseInt(DonaAddDonorInput.getText());
-                    res = Integer.parseInt(DonaAddResourceInput.getText());
-                    stock = Long.parseLong(DonaAddCuantityInput.getText());
-                    price = Integer.parseInt(DonaAddPriceInput.getText());
-                    
-                    date = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                    now = LocalDateTime.now();
-                    System.out.println("User wants to insert a new Donation of donor nº " + donor + " and resource nº " + res + "."
-                                     + "\nThe donated cuantity is " + stock + " set to not sell below " + price + "$."
-                                     + "\nThis Donation was registered at " + date.format(now) + " GMT+1");
-                                        
+                    if(DonaAddDonorInput.getText().equals("") || DonaAddResourceInput.getText().equals("") || DonaAddCuantityInput.getText().equals("") || DonaAddPriceInput.getText().equals("")){
+                        this.message("Información incorrecta","Uno o varios de los campos están vacíos.",3);
+                        System.out.println("User introduced blank fields, aborting operation.");
+                        omit = true;
+                        break;
+                    }
                     try{
-                        insertSta = bridge.conn.prepareStatement("INSERT INTO Donation VALUES(?, ?, '" + date.format(now) + "', ?, ?)");
-                        insertSta.setLong(1, stock);
-                        insertSta.setInt(2, price);
-                        
-                        insertSta.setInt(3, res);
-                        insertSta.setInt(4, donor);
-                        
-                        exec = insertSta.executeUpdate();
-                            
-                    }
-                    catch(SQLException sqle) {
-                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
-                        sqle.printStackTrace();
-                    }
+                        donor = Integer.parseInt(DonaAddDonorInput.getText());
+                        res = Integer.parseInt(DonaAddResourceInput.getText());
+                        stock = Long.parseLong(DonaAddCuantityInput.getText());
+                        price = Integer.parseInt(DonaAddPriceInput.getText());
+
+                        date = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                        now = LocalDateTime.now();
+                        System.out.println("User wants to insert a new Donation of donor nº " + donor + " and resource nº " + res + "."
+                                         + "\nThe donated cuantity is " + stock + " set to not sell below " + price + "$."
+                                         + "\nThis Donation was registered at " + date.format(now) + " GMT+1");
+
+                        try{
+                            insertSta = bridge.conn.prepareStatement("INSERT INTO Donation VALUES(?, ?, '" + date.format(now) + "', ?, ?)");
+                            insertSta.setLong(1, stock);
+                            insertSta.setInt(2, price);
+
+                            insertSta.setInt(3, res);
+                            insertSta.setInt(4, donor);
+
+                            exec = insertSta.executeUpdate();
+
+                        }
+                        catch(SQLException sqle) {
+                            this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                            sqle.printStackTrace();
+                        }
+                    }    
+                    catch(NumberFormatException nfe){
+                        this.message("Información incorrecta", "Uno o varios de los campos no contienen los datos correctos.", 1);
+                        System.out.println("Wrong data types introduced, aborting operation.");
+                        omit = true;
+                        break;
+                    }    
                     break;
                 case "Sale":
-                    id = Integer.parseInt(SaleAddIDInput.getText());
-                    res = Integer.parseInt(SaleAddResourceInput.getText());
-                    stock = Long.parseLong(SaleAddCuantityInput.getText());
-                    price = Integer.parseInt(SaleAddPriceInput.getText());
-                    date = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-                    now = LocalDateTime.now();
-                    System.out.println("User wants to insert a new Sale of " + stock + " of resource nº " + res + " at the price of " + price + "."
-                                     + "\nThis Sale was registered at " + date.format(now) + "GMT+1");
+                    if(SaleAddIDInput.getText().equals("") || SaleAddResourceInput.getText().equals("") || SaleAddCuantityInput.getText().equals("") || SaleAddPriceInput.getText().equals("")){
+                        this.message("Información incorrecta","Uno o varios de los campos están vacíos.",3);
+                        System.out.println("User introduced blank fields, aborting operation.");
+                        omit = true;
+                        break; 
+                    }
                     
                     try{
-                        insertSta = bridge.conn.prepareStatement("INSERT INTO Sale VALUES(?, ?, ?, '" + date.format(now) + "', ?)");
-                        insertSta.setInt(1, id);
-                        insertSta.setLong(2, stock);
-                        insertSta.setInt(3, price);
-                        
-                        insertSta.setInt(4, res);
-                        
-                        exec = insertSta.executeUpdate();
+                        id = Integer.parseInt(SaleAddIDInput.getText());
+                        res = Integer.parseInt(SaleAddResourceInput.getText());
+                        stock = Long.parseLong(SaleAddCuantityInput.getText());
+                        price = Integer.parseInt(SaleAddPriceInput.getText());
+                        date = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                        now = LocalDateTime.now();
+                        System.out.println("User wants to insert a new Sale of " + stock + " of resource nº " + res + " at the price of " + price + "."
+                                         + "\nThis Sale was registered at " + date.format(now) + "GMT+1");
+
+                        try{
+                            insertSta = bridge.conn.prepareStatement("INSERT INTO Sale VALUES(?, ?, ?, '" + date.format(now) + "', ?)");
+                            insertSta.setInt(1, id);
+                            insertSta.setLong(2, stock);
+                            insertSta.setInt(3, price);
+
+                            insertSta.setInt(4, res);
+
+                            exec = insertSta.executeUpdate();
+                        }
+                        catch(SQLException sqle) {
+                            this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                            sqle.printStackTrace();
+                        }
                     }
-                    catch(SQLException sqle) {
-                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
-                        sqle.printStackTrace();
+                    catch(NumberFormatException nfe){
+                        this.message("Información incorrecta", "Uno o varios de los campos no contienen los datos correctos.", 1);
+                        System.out.println("Wrong data types introduced, aborting operation.");
+                        omit = true;
+                        break;
                     }
                     break;
                 default:
@@ -2762,6 +2813,13 @@ public class MainW extends javax.swing.JFrame {
                         rate = Double.parseDouble(DonorModifyRateInput.getText()) / 100;
                         System.out.println("User wants to update the Donor nº " + id + ", to be named " + name + " and a new rate of " + rate);
 
+                        if(rate > 1 || rate < 0.001){
+                            this.message("Información incorrecta","Se ha introducido una tasa inválida,\nindique un valor entre 0.1 y 100 por ciento.",3);
+                        System.out.println("User introduced an invalid rate value, aborting operation.");
+                            omit = true;
+                            break;
+                        }
+                        
                         try{
                             modifySta = bridge.conn.prepareStatement("UPDATE Donor SET "
                                                                    + "ID = ?, "
@@ -2788,62 +2846,90 @@ public class MainW extends javax.swing.JFrame {
                     }
                     break;
                 case "Donation":
+                    if(DonaModifyDonorInput.getText().equals("") || DonaModifyResourceInput.getText().equals("") || DonaModifyCuantityInput.getText().equals("") || DonaModifyPriceInput.getText().equals("")){
+                        this.message("Información incorrecta","Uno o varios de los campos están vacíos.",3);
+                        System.out.println("User introduced blank fields, aborting operation.");
+                        omit = true;
+                        break;
+                    }
+                    
                     try{
                         donor = Integer.parseInt(DonaModifyDonorInput.getText());
                         res = Integer.parseInt(DonaModifyResourceInput.getText());
                         stock = Long.parseLong(DonaModifyCuantityInput.getText());
                         price = Integer.parseInt(DonaModifyPriceInput.getText());
                         System.out.println("User wants to update a Donation from donor nº " + id1 + " of resource nº " + id2 + " made on " + date + " to have a cuantity of " + stock + " with a minimum price of " + price + ".");
-                    
-                    
-                        modifySta = bridge.conn.prepareStatement("UPDATE Donation SET "
-                                                               + "cuantity = ?, "
-                                                               + "minPrice = ?, "
-                                                               + "sendTime = ?, "
-                                                               + "resID = ?, "
-                                                               + "donorID = ? "
-                                                               + "WHERE resID = " + id2 + " AND donorID = " + id1 + " AND sendTime = '" + date + "'");
                         
-                        modifySta.setLong(1, stock);
-                        modifySta.setInt(2, price);
-                        modifySta.setString(3, date);
-                        modifySta.setInt(4, res);
-                        modifySta.setInt(5, donor);
-                        
-                        exec = modifySta.executeUpdate();
+                        try{
+                            modifySta = bridge.conn.prepareStatement("UPDATE Donation SET "
+                                                                   + "cuantity = ?, "
+                                                                   + "minPrice = ?, "
+                                                                   + "sendTime = ?, "
+                                                                   + "resID = ?, "
+                                                                   + "donorID = ? "
+                                                                   + "WHERE resID = " + id2 + " AND donorID = " + id1 + " AND sendTime = '" + date + "'");
+
+                            modifySta.setLong(1, stock);
+                            modifySta.setInt(2, price);
+                            modifySta.setString(3, date);
+                            modifySta.setInt(4, res);
+                            modifySta.setInt(5, donor);
+
+                            exec = modifySta.executeUpdate();
+                        }
+                        catch(SQLException sqle) {
+                            this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                            sqle.printStackTrace();
+                        }
                     }
-                    catch(SQLException sqle) {
-                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
-                        sqle.printStackTrace();
+                    catch(NumberFormatException nfe){
+                        this.message("Información incorrecta", "Uno o varios de los campos no contienen los datos correctos.", 1);
+                        System.out.println("Wrong data types introduced, aborting operation.");
+                        omit = true;
+                        break;
                     }
                     break;
-                case "Sale":
+                case "Sale":                    
+                    if(SaleModifyIDInput.getText().equals("") || SaleModifyResourceInput.getText().equals("") || SaleModifyCuantityInput.getText().equals("") || SaleModifyPriceInput.getText().equals("")){
+                        this.message("Información incorrecta","Uno o varios de los campos están vacíos.",3);
+                        System.out.println("User introduced blank fields, aborting operation.");
+                        omit = true;
+                        break;
+                    }
+                    
                     try{
                         id = Integer.parseInt(SaleModifyIDInput.getText());
                         res = Integer.parseInt(SaleModifyResourceInput.getText());
                         stock = Long.parseLong(SaleModifyCuantityInput.getText());
                         price = Integer.parseInt(SaleModifyPriceInput.getText());
                         System.out.println("User wants to modify Sale nº " + id1 + " made on the " + date + " to be of resource nº " + res + ", for a final cuantity of " + stock + " and for a price of " + price + ".");
-                    
-                    
-                        modifySta = bridge.conn.prepareStatement("UPDATE Sale SET "
-                                                               + "ID = ?, "
-                                                               + "cantidad = ?, "
-                                                               + "precio = ?, "
-                                                               + "sellTime = ?, "
-                                                               + "resID = ? "
-                                                               + "WHERE ID = " + id1 + " AND resID = " + id2);
-                        modifySta.setInt(1, id);
-                        modifySta.setLong(2, stock);
-                        modifySta.setInt(3, price);
-                        modifySta.setString(4, date);
-                        modifySta.setInt(5, res);
-                        
-                        exec = modifySta.executeUpdate();
+
+                        try{
+                            modifySta = bridge.conn.prepareStatement("UPDATE Sale SET "
+                                                                   + "ID = ?, "
+                                                                   + "cantidad = ?, "
+                                                                   + "precio = ?, "
+                                                                   + "sellTime = ?, "
+                                                                   + "resID = ? "
+                                                                   + "WHERE ID = " + id1 + " AND resID = " + id2);
+                            modifySta.setInt(1, id);
+                            modifySta.setLong(2, stock);
+                            modifySta.setInt(3, price);
+                            modifySta.setString(4, date);
+                            modifySta.setInt(5, res);
+
+                            exec = modifySta.executeUpdate();
+                        }
+                        catch(SQLException sqle) {
+                            this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                            sqle.printStackTrace();
+                        }
                     }
-                    catch(SQLException sqle) {
-                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
-                        sqle.printStackTrace();
+                    catch(NumberFormatException nfe){
+                        this.message("Información incorrecta", "Uno o varios de los campos no contienen los datos correctos.", 3);
+                        System.out.println("Wrong data types introduced, aborting operation.");
+                        omit = true;
+                        break;
                     }
                     break;
                 default:
@@ -2979,6 +3065,8 @@ public class MainW extends javax.swing.JFrame {
             System.out.println("User did not chose an option and instead closed the dialog, operation uncorfirmed");
         }
     }
+    
+    
     
     private void message(String titulo, String m, int tipo){
         int tipoerr;
@@ -3263,5 +3351,4 @@ public class MainW extends javax.swing.JFrame {
     private javax.swing.JScrollPane SaleTableScrollPane;
     private javax.swing.JSeparator SaleTableSeparator;
     // End of variables declaration//GEN-END:variables
-
 }
