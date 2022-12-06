@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
@@ -1584,25 +1586,25 @@ public class MainW extends javax.swing.JFrame {
         //  them to be used by non-listener functions). 
         ResTableMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(false, 17, 2);
+                changeVisibilityToMenu(2);
             }
         });
         
         DonorTableMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(false, 17, 6);
+                changeVisibilityToMenu(6);
             }
         });
         
         DonaTableMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(false, 17, 10);
+                changeVisibilityToMenu(10);
             }
         });
         
         SaleTableMenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(false, 17, 14);
+                changeVisibilityToMenu(14);
             }
         });
         
@@ -2041,7 +2043,7 @@ public class MainW extends javax.swing.JFrame {
         //Remenber 'true'' means you want to delete the contents of the fields of 
         //the origin pane.
         if(del){
-            if(from > 2 || from < 17){
+            if(from > 2 && from < 17){
                 switch(from){
                     case 2:
                         ResTableNameSearchText.setText("Nombre");
@@ -2140,10 +2142,6 @@ public class MainW extends javax.swing.JFrame {
                     case 1:
                         panes[0] = true;
                         break;
-                    case 2:
-                        panes[1] = true;
-                        tableMaker("Resource");
-                        break;
                     case 3:
                         panes[2] = true;
                         break;
@@ -2152,10 +2150,6 @@ public class MainW extends javax.swing.JFrame {
                         break;
                     case 5:
                         panes[4] = true;
-                        break;
-                    case 6:
-                        panes[5] = true;
-                        tableMaker("Donor");
                         break;
                     case 7:
                         panes[6] = true;
@@ -2166,10 +2160,6 @@ public class MainW extends javax.swing.JFrame {
                     case 9:
                         panes[8] = true;
                         break;
-                    case 10:
-                        panes[9] = true;
-                        tableMaker("Donation");
-                        break;
                     case 11:
                         panes[10] = true;
                         break;
@@ -2178,10 +2168,6 @@ public class MainW extends javax.swing.JFrame {
                         break;
                     case 13:
                         panes[12] = true;
-                        break;
-                    case 14:
-                        panes[13] = true;
-                        tableMaker("Sale");
                         break;
                     case 15:
                         panes[14] = true;
@@ -2217,7 +2203,170 @@ public class MainW extends javax.swing.JFrame {
         }
         else{
             message("Error interno", "Ha ocurrido un error durante la carga de gráficos.\n(El código de ventana introducido no es correcto.)", 1);
-            System.out.println("The function hasn't been passed a correct origin parameter.");
+            System.out.println("The function hasn't been passed a correct destination parameter.");
+        }
+    }
+    
+    public void changeVisibilityToMenu(int to){
+        int from = 17;
+        ArrayList<JPanel> visible = new ArrayList<JPanel>();
+        boolean[] tables = {false, false, false, false};
+        
+        visible.add(MainMenuPane);
+        visible.add(ResTablePane);
+        visible.add(ResAddPane);
+        visible.add(ResModifyPane);
+        visible.add(ResRemovePane);
+        visible.add(DonorTablePane);
+        visible.add(DonorAddPane);
+        visible.add(DonorModifyPane);
+        visible.add(DonorRemovePane);
+        visible.add(DonaTablePane);
+        visible.add(DonaAddPane);
+        visible.add(DonaModifyPane);
+        visible.add(DonaRemovePane);
+        visible.add(SaleTablePane);
+        visible.add(SaleAddPane);
+        visible.add(SaleModifyPane);
+        visible.add(SaleRemovePane);
+        
+        for(int i = 0; i < 17; i++){
+            if(visible.get(i).isVisible()){
+                from = i + 1;
+                break;
+            }
+        }
+        
+        
+        if(from > 2 && from < 17){
+            switch(from){
+                case 2:
+                    ResTableNameSearchText.setText("Nombre");
+                    break;
+                case 3:
+                    ResAddIDInput.setText("");
+                    ResAddNameInput.setText("");
+                    ResAddStockInput.setText("");
+                    break;
+                case 4:
+                    ResModifyIDInput.setText("");
+                    ResModifyNameInput.setText("");
+                    ResModifyStockInput.setText("");
+                    break;
+                case 5:
+                    ResRemoveIDInput.setText("");
+                    ResRemoveNameInput.setText("");
+                    ResRemoveStockInput.setText("");
+                    break;
+                case 6:
+                    DonorTableNameSearchText.setText("Nombre");
+                    break;
+                case 7:
+                    DonorAddIDInput.setText("");
+                    DonorAddNameInput.setText("");
+                    DonorAddRateInput.setText("");
+                    break;
+                case 8:
+                    DonorModifyIDInput.setText("");
+                    DonorModifyNameInput.setText("");
+                    DonorModifyRateInput.setText("");
+                    break;
+                case 9:
+                    DonorRemoveIDInput.setText("");
+                    DonorRemoveNameInput.setText("");
+                    DonorRemoveRateInput.setText("");
+                    break;
+                case 10:
+                    DonaTableDonorSearchText.setText("Donante");
+                    DonaTableResourceSearchText.setText("Recurso");
+                    DonaTableDateSearchText.setText("Fecha");
+                    break;
+                case 11:
+                    DonaAddDonorInput.setText("");
+                    DonaAddResourceInput.setText("");
+                    DonaAddCuantityInput.setText("");
+                    DonaAddPriceInput.setText("");
+                    break;
+                case 12:
+                    DonaModifyDonorInput.setText("");
+                    DonaModifyResourceInput.setText("");
+                    DonaModifyCuantityInput.setText("");
+                    DonaModifyPriceInput.setText("");
+                    break;
+                case 13:
+                    DonaRemoveDonorInput.setText("");
+                    DonaRemoveResourceInput.setText("");
+                    DonaRemoveCuantityInput.setText("");
+                    DonaRemovePriceInput.setText("");
+                    break;
+                case 14:
+                    SaleTableResourceSearchText.setText("Recurso");
+                    SaleTableDateSearchText.setText("Fecha");
+                    break;
+                case 15:
+                    SaleAddIDInput.setText("");
+                    SaleAddResourceInput.setText("");
+                    SaleAddCuantityInput.setText("");
+                    SaleAddPriceInput.setText("");
+                    break;
+                case 16:
+                    SaleModifyIDInput.setText("");
+                    SaleModifyResourceInput.setText("");
+                    SaleModifyCuantityInput.setText("");
+                    SaleModifyPriceInput.setText("");
+                    break;
+                case 17:
+                    SaleRemoveIDInput.setText("");
+                    SaleRemoveResourceInput.setText("");
+                    SaleRemoveCuantityInput.setText("");
+                    SaleRemovePriceInput.setText("");
+                    break;
+                default:
+                    System.out.println("The program somehow (and yes, I'm talking about you, deadass developer) managed to fuck this up and completely bypass the previous out of bounds check");
+                    break;
+            }
+        }
+        
+        if(to >= 2 && to <= 14){
+            switch(to){
+                case 2:
+                    tables[0] = true;
+                    tableMaker("Resource");
+                    break;
+                case 6:
+                    tables[1] = true;
+                    tableMaker("Donor");
+                    break;
+                case 10:
+                    tables[2] = true;
+                    tableMaker("Donation");
+                    break;
+                case 14:
+                    tables[3] = true;
+                    tableMaker("Sale");
+                    break;
+                default:
+                    System.out.println("Once again, I ask you for your psychological support, because I don't get how you manage to screw this up.");
+                    break;
+            }
+            
+            MainMenuPane.setVisible(false);
+            ResTablePane.setVisible(tables[0]);
+            ResAddPane.setVisible(false);
+            ResModifyPane.setVisible(false);
+            ResRemovePane.setVisible(false);
+            DonorTablePane.setVisible(tables[1]);
+            DonorAddPane.setVisible(false);
+            DonorModifyPane.setVisible(false);
+            DonorRemovePane.setVisible(false);
+            DonaTablePane.setVisible(tables[2]);
+            DonaAddPane.setVisible(false);
+            DonaModifyPane.setVisible(false);
+            DonaRemovePane.setVisible(false);
+            SaleTablePane.setVisible(tables[3]);
+            SaleAddPane.setVisible(false);
+            SaleModifyPane.setVisible(false);
+            SaleRemovePane.setVisible(false);
         }
     }
     
