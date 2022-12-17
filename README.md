@@ -10,4 +10,5 @@
 - Search tools for the CRUD panels, so there's no need to select a row before entering one if these panels (this should include a JBeans component).
 
 
+## Releases
 Latest release (v0.0.7) [here](https://github.com/THEliberator03/RR-Storing-Manager/releases/tag/early-alpha)

@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 
 /**
  *
@@ -45,8 +44,8 @@ public class MainW extends javax.swing.JFrame {
         ResTableAddBut = new javax.swing.JButton();
         ResTableModifyBut = new javax.swing.JButton();
         ResTableRemoveBut = new javax.swing.JButton();
-        ResTableBackBut = new javax.swing.JButton();
         ResTableNameSearchText = new javax.swing.JTextField();
+        ResTableBackBut = new javax.swing.JButton();
         ResTableSeparator = new javax.swing.JSeparator();
         ResTableScrollPane = new javax.swing.JScrollPane();
         ResTable = new javax.swing.JTable();
@@ -300,15 +299,15 @@ public class MainW extends javax.swing.JFrame {
         ResTableLateralPanel.add(ResTableRemoveBut);
         ResTableRemoveBut.setBounds(0, 110, 120, 30);
 
-        ResTableBackBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        ResTableBackBut.setText("Volver");
-        ResTableLateralPanel.add(ResTableBackBut);
-        ResTableBackBut.setBounds(0, 370, 120, 30);
-
         ResTableNameSearchText.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         ResTableNameSearchText.setText("Nombre");
         ResTableLateralPanel.add(ResTableNameSearchText);
         ResTableNameSearchText.setBounds(0, 190, 120, 30);
+
+        ResTableBackBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        ResTableBackBut.setText("Volver");
+        ResTableLateralPanel.add(ResTableBackBut);
+        ResTableBackBut.setBounds(0, 370, 120, 30);
 
         ResTablePane.add(ResTableLateralPanel);
         ResTableLateralPanel.setBounds(0, 0, 120, 425);
@@ -348,10 +347,18 @@ public class MainW extends javax.swing.JFrame {
         }
     );
     ResTable.setAutoscrolls(false);
-    ResTable.setMinimumSize(new java.awt.Dimension(450, 415));
-    ResTable.setPreferredSize(new java.awt.Dimension(450, 415));
+    ResTable.setMinimumSize(null);
+    ResTable.setPreferredSize(null);
     ResTable.setRowHeight(24);
     ResTable.setShowGrid(true);
+    ResTable.getColumnModel().getColumn(0).setMaxWidth(45);
+    ResTable.getColumnModel().getColumn(0).setMinWidth(45);
+    ResTable.getColumnModel().getColumn(1).setMaxWidth(120);
+    ResTable.getColumnModel().getColumn(1).setMinWidth(120);
+    ResTable.getColumnModel().getColumn(2).setMaxWidth(110);
+    ResTable.getColumnModel().getColumn(1).setMinWidth(110);
+    ResTable.getColumnModel().getColumn(3).setMaxWidth(150);
+    ResTable.getColumnModel().getColumn(3).setMinWidth(150);
     ResTableScrollPane.setViewportView(ResTable);
 
     ResTablePane.add(ResTableScrollPane);
@@ -415,7 +422,7 @@ public class MainW extends javax.swing.JFrame {
     ResAddNameInput.setBounds(270, 130, 130, 30);
 
     ResAddStockLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    ResAddStockLabel.setText("Stock restante:");
+    ResAddStockLabel.setText("Stock Restante:");
     ResAddHeavenPanel.add(ResAddStockLabel);
     ResAddStockLabel.setBounds(80, 210, 150, 30);
 
@@ -468,25 +475,25 @@ public class MainW extends javax.swing.JFrame {
     ResModifyIDLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
     ResModifyIDLabel.setText("Identificador:");
     ResModifyHeavenPanel.add(ResModifyIDLabel);
-    ResModifyIDLabel.setBounds(80, 50, 200, 30);
+    ResModifyIDLabel.setBounds(80, 50, 190, 30);
 
     ResModifyIDInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
     ResModifyHeavenPanel.add(ResModifyIDInput);
     ResModifyIDInput.setBounds(270, 50, 130, 30);
 
     ResModifyNameLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    ResModifyNameLabel.setText("Nuevo nombre:");
+    ResModifyNameLabel.setText("Nuevo Nombre:");
     ResModifyHeavenPanel.add(ResModifyNameLabel);
-    ResModifyNameLabel.setBounds(80, 130, 200, 30);
+    ResModifyNameLabel.setBounds(80, 130, 190, 30);
 
     ResModifyNameInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
     ResModifyHeavenPanel.add(ResModifyNameInput);
     ResModifyNameInput.setBounds(270, 130, 130, 30);
 
     ResModifyStockLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    ResModifyStockLabel.setText("Nuevo stock:");
+    ResModifyStockLabel.setText("Nuevo Stock:");
     ResModifyHeavenPanel.add(ResModifyStockLabel);
-    ResModifyStockLabel.setBounds(80, 210, 200, 30);
+    ResModifyStockLabel.setBounds(80, 210, 190, 30);
 
     ResModifyStockInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
     ResModifyHeavenPanel.add(ResModifyStockInput);
@@ -555,7 +562,7 @@ public class MainW extends javax.swing.JFrame {
     ResRemoveNameInput.setBounds(270, 130, 130, 30);
 
     ResRemoveStockLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    ResRemoveStockLabel.setText("Stock restante:");
+    ResRemoveStockLabel.setText("Stock Restante:");
     ResRemoveHeavenPanel.add(ResRemoveStockLabel);
     ResRemoveStockLabel.setBounds(80, 210, 150, 30);
 
@@ -662,8 +669,8 @@ public class MainW extends javax.swing.JFrame {
             return canEdit [columnIndex];
         }
     });
-    DonorTable.setMinimumSize(new java.awt.Dimension(450, 415));
-    DonorTable.setPreferredSize(new java.awt.Dimension(450, 415));
+    DonorTable.setMinimumSize(null);
+    DonorTable.setPreferredSize(null);
     DonorTable.setRowHeight(24);
     DonorTable.setShowGrid(true);
     DonorTableScrollPane.setViewportView(DonorTable);
@@ -712,7 +719,7 @@ public class MainW extends javax.swing.JFrame {
     DonorAddHeavenPanel.setLayout(null);
 
     DonorAddIDLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    DonorAddIDLabel.setText("Identificador del donante:");
+    DonorAddIDLabel.setText("Identificador del Donante:");
     DonorAddHeavenPanel.add(DonorAddIDLabel);
     DonorAddIDLabel.setBounds(80, 60, 170, 30);
 
@@ -721,7 +728,7 @@ public class MainW extends javax.swing.JFrame {
     DonorAddIDInput.setBounds(270, 60, 130, 30);
 
     DonorAddNameLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    DonorAddNameLabel.setText("Nombre del donante:");
+    DonorAddNameLabel.setText("Nombre del Donante:");
     DonorAddHeavenPanel.add(DonorAddNameLabel);
     DonorAddNameLabel.setBounds(80, 140, 170, 30);
 
@@ -779,7 +786,7 @@ public class MainW extends javax.swing.JFrame {
     DonorModifyHeavenPanel.setLayout(null);
 
     DonorModifyIDLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    DonorModifyIDLabel.setText("ID del donante:");
+    DonorModifyIDLabel.setText("ID del Donante:");
     DonorModifyHeavenPanel.add(DonorModifyIDLabel);
     DonorModifyIDLabel.setBounds(80, 60, 160, 30);
 
@@ -788,7 +795,7 @@ public class MainW extends javax.swing.JFrame {
     DonorModifyIDInput.setBounds(270, 60, 130, 30);
 
     DonorModifyNameLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    DonorModifyNameLabel.setText("Nuevo nombre:");
+    DonorModifyNameLabel.setText("Nuevo Nombre:");
     DonorModifyHeavenPanel.add(DonorModifyNameLabel);
     DonorModifyNameLabel.setBounds(80, 140, 160, 30);
 
@@ -797,7 +804,7 @@ public class MainW extends javax.swing.JFrame {
     DonorModifyNameInput.setBounds(270, 140, 130, 30);
 
     DonorModifyRateLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    DonorModifyRateLabel.setText("Nueva tasa de ventas:");
+    DonorModifyRateLabel.setText("Nueva Tasa de Ventas:");
     DonorModifyHeavenPanel.add(DonorModifyRateLabel);
     DonorModifyRateLabel.setBounds(80, 220, 160, 30);
 
@@ -856,7 +863,7 @@ public class MainW extends javax.swing.JFrame {
     DonorRemoveIDInput.setBounds(270, 60, 130, 30);
 
     DonorRemoveNameLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    DonorRemoveNameLabel.setText("Nombre del donante:");
+    DonorRemoveNameLabel.setText("Nombre del Donante:");
     DonorRemoveHeavenPanel.add(DonorRemoveNameLabel);
     DonorRemoveNameLabel.setBounds(80, 140, 170, 30);
 
@@ -977,9 +984,9 @@ public class MainW extends javax.swing.JFrame {
             return canEdit [columnIndex];
         }
     });
-    DonaTable.setMinimumSize(new java.awt.Dimension(450, 415));
+    DonaTable.setMinimumSize(null);
     DonaTable.setName("ResTable"); // NOI18N
-    DonaTable.setPreferredSize(new java.awt.Dimension(450, 415));
+    DonaTable.setPreferredSize(null);
     DonaTable.setRowHeight(24);
     DonaTable.setShowGrid(true);
     DonaTableScrollPane.setViewportView(DonaTable);
@@ -1034,7 +1041,7 @@ public class MainW extends javax.swing.JFrame {
     DonaAddDonorInput.setBounds(270, 60, 130, 30);
 
     DonaAddResourceLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    DonaAddResourceLabel.setText("Recurso donado:");
+    DonaAddResourceLabel.setText("Recurso Donado:");
     DonaAddHeavenPanel.add(DonaAddResourceLabel);
     DonaAddResourceLabel.setBounds(80, 140, 140, 30);
 
@@ -1052,7 +1059,7 @@ public class MainW extends javax.swing.JFrame {
     DonaAddCuantityInput.setBounds(270, 220, 130, 30);
 
     DonaAddPriceLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    DonaAddPriceLabel.setText("Precio mínimo:");
+    DonaAddPriceLabel.setText("Precio Mínimo:");
     DonaAddHeavenPanel.add(DonaAddPriceLabel);
     DonaAddPriceLabel.setBounds(80, 300, 140, 30);
 
@@ -1110,7 +1117,7 @@ public class MainW extends javax.swing.JFrame {
     DonaModifyDonorInput.setBounds(270, 60, 130, 30);
 
     DonaModifyResourceLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    DonaModifyResourceLabel.setText("Nuevo recurso:");
+    DonaModifyResourceLabel.setText("Nuevo Recurso:");
     DonaModifyHeavenPanel.add(DonaModifyResourceLabel);
     DonaModifyResourceLabel.setBounds(80, 140, 140, 30);
 
@@ -1119,7 +1126,7 @@ public class MainW extends javax.swing.JFrame {
     DonaModifyResourceInput.setBounds(270, 140, 130, 30);
 
     DonaModifyCuantityLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    DonaModifyCuantityLabel.setText("Nueva cantidad:");
+    DonaModifyCuantityLabel.setText("Nueva Cantidad:");
     DonaModifyHeavenPanel.add(DonaModifyCuantityLabel);
     DonaModifyCuantityLabel.setBounds(80, 220, 140, 30);
 
@@ -1128,7 +1135,7 @@ public class MainW extends javax.swing.JFrame {
     DonaModifyCuantityInput.setBounds(270, 220, 130, 30);
 
     DonaModifyPriceLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    DonaModifyPriceLabel.setText("Nuevo precio mínimo:");
+    DonaModifyPriceLabel.setText("Nuevo Precio Mínimo:");
     DonaModifyHeavenPanel.add(DonaModifyPriceLabel);
     DonaModifyPriceLabel.setBounds(80, 300, 140, 30);
 
@@ -1204,7 +1211,7 @@ public class MainW extends javax.swing.JFrame {
     DonaRemoveCuantityInput.setBounds(270, 220, 130, 30);
 
     DonaRemovePriceLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    DonaRemovePriceLabel.setText("Nuevo precio mínimo:");
+    DonaRemovePriceLabel.setText("Precio Mínimo:");
     DonaRemoveHeavenPanel.add(DonaRemovePriceLabel);
     DonaRemovePriceLabel.setBounds(80, 300, 140, 30);
 
@@ -1240,7 +1247,7 @@ public class MainW extends javax.swing.JFrame {
     SaleTableRemoveBut.setBounds(0, 110, 120, 30);
 
     SaleTableResourceSearchText.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    SaleTableResourceSearchText.setText("Material");
+    SaleTableResourceSearchText.setText("Recurso");
     SaleTableLateralPanel.add(SaleTableResourceSearchText);
     SaleTableResourceSearchText.setBounds(0, 190, 120, 30);
 
@@ -1289,8 +1296,8 @@ public class MainW extends javax.swing.JFrame {
         }
     });
     SaleTable.setAutoscrolls(false);
-    SaleTable.setMinimumSize(new java.awt.Dimension(450, 415));
-    SaleTable.setPreferredSize(new java.awt.Dimension(450, 415));
+    SaleTable.setMinimumSize(null);
+    SaleTable.setPreferredSize(null);
     SaleTable.setRowHeight(24);
     SaleTable.setShowGrid(true);
     SaleTableScrollPane.setViewportView(SaleTable);
@@ -1430,7 +1437,7 @@ public class MainW extends javax.swing.JFrame {
     SaleModifyResourceInput.setBounds(270, 140, 130, 30);
 
     SaleModifyCuantityLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-    SaleModifyCuantityLabel.setText("Nueva cantidad:");
+    SaleModifyCuantityLabel.setText("Nueva Cantidad:");
     SaleModifyHeavenPanel.add(SaleModifyCuantityLabel);
     SaleModifyCuantityLabel.setBounds(80, 220, 140, 30);
 
@@ -1637,7 +1644,7 @@ public class MainW extends javax.swing.JFrame {
                 if(selRow != -1){
                     int id = (Integer) ResTable.getValueAt(selRow, 0);
 
-                    launchRowRemover("Resource", id, 0);
+                    launchRowRemover("Resource", id, 0, "");
                 }
                 else{
                     message("Selección errónea", "No se ha seleccionado el recurso a eliminar.", 3);
@@ -1673,7 +1680,7 @@ public class MainW extends javax.swing.JFrame {
                 if(selRow != -1){
                     int id = (Integer) DonorTable.getValueAt(selRow, 0);
 
-                    launchRowRemover("Donor", id, 0);
+                    launchRowRemover("Donor", id, 0, "");
                 }
                 else{
                     message("Selección errónea", "No se ha seleccionado el donante a eliminar.", 3);
@@ -1712,8 +1719,10 @@ public class MainW extends javax.swing.JFrame {
 
                     String donorID = (String) DonaTable.getValueAt(selRow, 0);
                     int id2 = Integer.parseInt(donorID.split("\\(")[1].split("\\)")[0]);
+                    
+                    String time = (String) DonaTable.getValueAt(selRow, 4);
 
-                    launchRowRemover("Donation", id1, id2);
+                    launchRowRemover("Donation", id1, id2, time);
                 }
                 else{
                     message("Selección errónea", "No se ha seleccionado la donación a eliminar.", 3);
@@ -1749,7 +1758,7 @@ public class MainW extends javax.swing.JFrame {
                 if(selRow != -1){
                     int id = (Integer) SaleTable.getValueAt(selRow, 0);
 
-                    launchRowRemover("Sale", id, 0);
+                    launchRowRemover("Sale", id, 0, "");
                 }
                 else{
                     message("Selección errónea", "No se ha seleccionado la venta a eliminar.", 3);
@@ -1763,73 +1772,73 @@ public class MainW extends javax.swing.JFrame {
         
         ResAddCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(false, 3, 2);
+                changeVisibilityToMenu(2);
             }
         });
         
         ResModifyCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(false, 4, 2);
+                changeVisibilityToMenu(2);
             }
         });
         
         ResRemoveCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(true, 5, 2);
+                changeVisibilityToMenu(2);
             }
         });
         
         DonorAddCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(false, 11, 6);
+                changeVisibilityToMenu(6);
             }
         });
          
         DonorModifyCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(false, 12, 6);
+                changeVisibilityToMenu(6);
             }
         });
         
         DonorRemoveCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(true, 13, 6);
+                changeVisibilityToMenu(6);
             }
         });
         
         DonaAddCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(false, 7, 10);
+                changeVisibilityToMenu(10);
             }
         });
         
         DonaModifyCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(false, 8, 10);
+                changeVisibilityToMenu(10);
             }
         });
         
         DonaRemoveCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(true, 9, 10);
+                changeVisibilityToMenu(10);
             }
         });
         
         SaleAddCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(false, 15, 14);
+                changeVisibilityToMenu(14);
             }
         });
         
         SaleModifyCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(false, 16, 14);
+                changeVisibilityToMenu(14);
             }
         });
         
         SaleRemoveCancelBut.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                changeVisibility(true, 17, 14);
+                changeVisibilityToMenu(14);
             }
         });
         
@@ -2014,9 +2023,113 @@ public class MainW extends javax.swing.JFrame {
                 }
             }
         });
+        
+        //--KeyPressed listeners for the Search Texts to call a WHERE or LIKE 
+        //  clause on the TablePanes when the user wnats to search instead of 
+        //  looking at the full table. 
+        ResTableNameSearchText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt){
+                if(evt.getKeyCode() == 10){
+                    String text = ResTableNameSearchText.getText();
+                    if(!text.equals("")){
+                        tableSearch("Resource", 1, text);
+                    }
+                    else{
+                        message("Información incorrecta","No se ha indicado nada que buscar",3);
+                    }
+                }
+            }
+        });
+        
+        DonorTableNameSearchText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt){
+                if(evt.getKeyCode() == 10){
+                    String text = DonorTableNameSearchText.getText();
+                    if(!text.equals("")){
+                        tableSearch("Donor", 1, text);
+                    }
+                    else{
+                        message("Información incorrecta","No se ha indicado nada que buscar",3);
+                    }
+                }
+            }
+        });
+        
+        DonaTableDonorSearchText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt){
+                if(evt.getKeyCode() == 10){
+                    String text = DonaTableDonorSearchText.getText();
+                    if(!text.equals("")){
+                        tableSearch("Donation", 2, text);
+                    }
+                    else{
+                        message("Información incorrecta","No se ha indicado nada que buscar",3);
+                    }
+                }
+            }
+        });
+        
+        DonaTableResourceSearchText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt){
+                if(evt.getKeyCode() == 10){
+                    String text = DonaTableResourceSearchText.getText();
+                    if(!text.equals("")){
+                        tableSearch("Donation", 3, text);
+                    }
+                    else{
+                        message("Información incorrecta","No se ha indicado nada que buscar",3);
+                    }
+                }
+            }
+        });
+        
+        DonaTableDateSearchText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt){
+                if(evt.getKeyCode() == 10){
+                    String text = DonaTableDateSearchText.getText();
+                    if(!text.equals("")){
+                        tableSearch("Donation", 4, text);
+                    }
+                    else{
+                        message("Información incorrecta","No se ha indicado nada que buscar",3);
+                    }
+                }
+            }
+        });
+        
+        SaleTableResourceSearchText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt){
+                if(evt.getKeyCode() == 10){
+                    String text = SaleTableResourceSearchText.getText();
+                    if(!text.equals("")){
+                        tableSearch("Sale", 3, text);
+                    }
+                    else{
+                        message("Información incorrecta","No se ha indicado nada que buscar",3);
+                    }
+                }
+            }
+        });
+        
+        SaleTableDateSearchText.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt){
+                if(evt.getKeyCode() == 10){
+                    String text = SaleTableDateSearchText.getText();
+                    if(!text.equals("")){
+                        tableSearch("Sale", 4, text);
+                    }
+                    else{
+                        message("Información incorrecta","No se ha indicado nada que buscar",3);
+                    }
+                }
+            }
+        });
     }
     
     /*
+    ======================Functions that do visual changes======================
+
+
     List of Panes contained in the MainLayeredPane each number will correspond
     to its respective Pane when used in the changeVisibility() function:
         1 - MainMenuPane
@@ -2043,7 +2156,7 @@ public class MainW extends javax.swing.JFrame {
         //Remenber 'true'' means you want to delete the contents of the fields of 
         //the origin pane.
         if(del){
-            if(from > 2 && from < 17){
+            if(from >= 2 && from <= 17){
                 switch(from){
                     case 2:
                         ResTableNameSearchText.setText("Nombre");
@@ -2137,7 +2250,7 @@ public class MainW extends javax.swing.JFrame {
             }
         }
         
-        if(to > 1 || to < 17){
+        if(to >= 1 || to <= 17){
             switch(to){
                     case 1:
                         panes[0] = true;
@@ -2388,7 +2501,7 @@ public class MainW extends javax.swing.JFrame {
                 break;
             default:
                 tModel = (DefaultTableModel) this.SaleTable.getModel();
-                this.message("Información","Error de función, no se ha especificado la tabla a mostrar: ",1);
+                this.message("Error Interno","Error de función, no se ha especificado la tabla a mostrar: ",1);
                 break;
         };
         
@@ -2406,6 +2519,7 @@ public class MainW extends javax.swing.JFrame {
             
             switch(tableName){
                 case "Resource":
+                    
                     while(res.next()){
                         String lastTime = "SELECT MAX(sendTime) FROM Donation WHERE resID = (SELECT ID FROM Resource WHERE ID = " + res.getInt(1) + ")";
                         auxRes = auxBridge.querier.executeQuery(lastTime);
@@ -2444,7 +2558,7 @@ public class MainW extends javax.swing.JFrame {
                     break;
                 default:
                     System.out.println("No hay una tabla definida, no se mostrará nada.");
-                    this.message("Información","Error de función, no se ha especificado la tabla a mostrar: ",1);
+                    this.message("Error Interno","Error de función, no se ha especificado la tabla a mostrar: ",1);
                     break;
             }
             
@@ -2452,7 +2566,7 @@ public class MainW extends javax.swing.JFrame {
             auxBridge.close();
         }
         catch(SQLException sqle) {
-               this.message("Información","Error SQL: " + sqle.getMessage(),1);
+               this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
                sqle.printStackTrace();
         }
         catch(NullPointerException npe){
@@ -2586,7 +2700,7 @@ public class MainW extends javax.swing.JFrame {
                     changeVisibility(true, 14, 16);
                     break;
                 default:
-                    this.message("Información", "No se ha especificado una tabla que editar.", 1);
+                    this.message("Error Interno", "No se ha especificado una tabla que editar.", 1);
                     break;
             }
         }
@@ -2596,7 +2710,7 @@ public class MainW extends javax.swing.JFrame {
         }
     }
     
-    private void launchRowRemover(String tableName, int id, int id2){
+    private void launchRowRemover(String tableName, int id, int id2, String time){
         try{
             System.out.println("puto resultset");
             ResultSet res;
@@ -2629,7 +2743,7 @@ public class MainW extends javax.swing.JFrame {
                     changeVisibility(true, 6, 9);
                     break;
                 case "Donation":
-                    res = bridge.querier.executeQuery("SELECT * FROM Donation WHERE donorID = " + id + " AND resID = " + id2);
+                    res = bridge.querier.executeQuery("SELECT * FROM Donation WHERE resID = " + id + " AND donorID = " + id2 + " AND sendTime = '" + time + "'");
                     
                     DonaRemoveDonorInput.setText(Integer.toString( res.getInt(5) ));
                     DonaRemoveResourceInput.setText(Integer.toString( res.getInt(4) ));
@@ -2659,7 +2773,7 @@ public class MainW extends javax.swing.JFrame {
                     changeVisibility(true, 14, 17);
                     break;
                 default:
-                    this.message("Información", "No se ha especificado una tabla que editar.", 1);
+                    this.message("Error Interno", "No se ha especificado una tabla que editar.", 1);
                     break;
             }
         }
@@ -2669,8 +2783,33 @@ public class MainW extends javax.swing.JFrame {
         }
     }
     
+    private void message(String titulo, String m, int tipo){
+        int tipoerr;
+        switch(tipo) {
+            case 1:  
+                tipoerr = JOptionPane.ERROR_MESSAGE; 
+                break;
+            case 2: 
+                tipoerr = JOptionPane.INFORMATION_MESSAGE; 
+                break;
+            case 3:
+                tipoerr = JOptionPane.WARNING_MESSAGE;
+                break;
+            case 4:
+                tipoerr = JOptionPane.QUESTION_MESSAGE;
+                break;
+            default:
+                tipoerr = 1;
+        }
+        
+        
+        JOptionPane.showMessageDialog(null, m, titulo, tipoerr);
+    }
     
     
+    /*
+    =====================Functions that change the DB info======================
+    */
     private void insert(String tableName){
         UIManager.put("OptionPane.okButtonText", "Aceptar");
         UIManager.put("OptionPane.cancelButtonText", "Cancelar");
@@ -2714,7 +2853,7 @@ public class MainW extends javax.swing.JFrame {
                             exec = insertSta.executeUpdate();
                         }
                         catch(SQLException sqle) {
-                            this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                            this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
                             sqle.printStackTrace();
                         }
                     }
@@ -2739,7 +2878,7 @@ public class MainW extends javax.swing.JFrame {
                         rate = Double.parseDouble(DonorAddRateInput.getText()) / 100;
                         System.out.println("User wants to insert a new Donor with ID " + id + ", named " + name + " and with a sales rate of " + rate);
                         
-                        if(rate > 1 || rate < 0.001){
+                        if(rate > 1 || rate < 0){
                             this.message("Información incorrecta","Se ha introducido una tasa inválida,\nindique un valor entre 0.1 y 100 por ciento.",3);
                         System.out.println("User introduced an invalid rate value, aborting operation.");
                             omit = true;
@@ -2755,7 +2894,7 @@ public class MainW extends javax.swing.JFrame {
                             exec = insertSta.executeUpdate();
                         }
                         catch(SQLException sqle) {
-                            this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                            this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
                             sqle.printStackTrace();
                         }
                     }
@@ -2797,7 +2936,7 @@ public class MainW extends javax.swing.JFrame {
 
                         }
                         catch(SQLException sqle) {
-                            this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                            this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
                             sqle.printStackTrace();
                         }
                     }    
@@ -2837,7 +2976,7 @@ public class MainW extends javax.swing.JFrame {
                             exec = insertSta.executeUpdate();
                         }
                         catch(SQLException sqle) {
-                            this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                            this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
                             sqle.printStackTrace();
                         }
                     }
@@ -2866,16 +3005,16 @@ public class MainW extends javax.swing.JFrame {
                 
                 switch(tableName){
                     case "Resource":
-                        changeVisibility(true, 3, 2);
+                        changeVisibilityToMenu(2);
                         break;
                     case "Donor":
-                        changeVisibility(true, 7, 6);
+                        changeVisibilityToMenu(6);
                         break;
                     case "Donation":
-                        changeVisibility(true, 11, 10);
+                        changeVisibilityToMenu(10);
                         break;
                     case "Sale":
-                        changeVisibility(true, 15, 14);
+                        changeVisibilityToMenu(14);
                         break;
                     default:
                         changeVisibility(false, 17, 1);
@@ -2911,7 +3050,7 @@ public class MainW extends javax.swing.JFrame {
                 case "Resource":
                     if(ResModifyIDInput.getText().equals("") || ResModifyNameInput.getText().equals("") || ResModifyStockInput.getText().equals("")){
                         this.message("Información incorrecta","Uno o varios de los campos están vacíos.",3);
-                        System.out.println("User introduced blank fields, aborting operation.");
+                        System.out.println("User introduced blank fields, aborting insert operation.");
                         omit = true;
                         break;
                     }
@@ -2937,13 +3076,13 @@ public class MainW extends javax.swing.JFrame {
                             exec = modifySta.executeUpdate();
                         }
                         catch(SQLException sqle) {
-                            this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                            this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
                             sqle.printStackTrace();
                         }
                     }
                     catch(NumberFormatException nfe){
                         this.message("Información incorrecta", "Uno o varios de los campos no contienen los datos correctos.", 3);
-                        System.out.println("Wrong data types introduced, aborting operation.");
+                        System.out.println("Wrong data types introduced, aborting insert operation.");
                         omit = true;
                         break;
                     }
@@ -2951,7 +3090,7 @@ public class MainW extends javax.swing.JFrame {
                 case "Donor":
                     if(DonorModifyIDInput.getText().equals("") || DonorModifyNameInput.getText().equals("") || DonorModifyRateInput.getText().equals("")){
                         this.message("Información incorrecta","Uno o varios de los campos están vacíos.",1);
-                        System.out.println("User introduced blank fields, aborting operation.");
+                        System.out.println("User introduced blank fields, aborting insert operation.");
                         omit = true;
                         break;
                     }
@@ -2962,9 +3101,9 @@ public class MainW extends javax.swing.JFrame {
                         rate = Double.parseDouble(DonorModifyRateInput.getText()) / 100;
                         System.out.println("User wants to update the Donor nº " + id + ", to be named " + name + " and a new rate of " + rate);
 
-                        if(rate > 1 || rate < 0.001){
+                        if(rate > 1 || rate < 0){
                             this.message("Información incorrecta","Se ha introducido una tasa inválida,\nindique un valor entre 0.1 y 100 por ciento.",3);
-                        System.out.println("User introduced an invalid rate value, aborting operation.");
+                        System.out.println("User introduced an invalid rate value, aborting insert operation.");
                             omit = true;
                             break;
                         }
@@ -2983,13 +3122,13 @@ public class MainW extends javax.swing.JFrame {
                             exec = modifySta.executeUpdate();
                         }
                         catch(SQLException sqle) {
-                            this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                            this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
                             sqle.printStackTrace();
                         }
                     }
                     catch(NumberFormatException nfe){
                         this.message("Información incorrecta", "Uno o varios de los campos no contienen los datos correctos.", 1);
-                        System.out.println("Wrong data types introduced, aborting operation.");
+                        System.out.println("Wrong data types introduced, aborting insert operation.");
                         omit = true;
                         break;
                     }
@@ -2997,7 +3136,7 @@ public class MainW extends javax.swing.JFrame {
                 case "Donation":
                     if(DonaModifyDonorInput.getText().equals("") || DonaModifyResourceInput.getText().equals("") || DonaModifyCuantityInput.getText().equals("") || DonaModifyPriceInput.getText().equals("")){
                         this.message("Información incorrecta","Uno o varios de los campos están vacíos.",3);
-                        System.out.println("User introduced blank fields, aborting operation.");
+                        System.out.println("User introduced blank fields, aborting insert operation.");
                         omit = true;
                         break;
                     }
@@ -3027,13 +3166,13 @@ public class MainW extends javax.swing.JFrame {
                             exec = modifySta.executeUpdate();
                         }
                         catch(SQLException sqle) {
-                            this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                            this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
                             sqle.printStackTrace();
                         }
                     }
                     catch(NumberFormatException nfe){
                         this.message("Información incorrecta", "Uno o varios de los campos no contienen los datos correctos.", 1);
-                        System.out.println("Wrong data types introduced, aborting operation.");
+                        System.out.println("Wrong data types introduced, aborting insert operation.");
                         omit = true;
                         break;
                     }
@@ -3041,7 +3180,7 @@ public class MainW extends javax.swing.JFrame {
                 case "Sale":                    
                     if(SaleModifyIDInput.getText().equals("") || SaleModifyResourceInput.getText().equals("") || SaleModifyCuantityInput.getText().equals("") || SaleModifyPriceInput.getText().equals("")){
                         this.message("Información incorrecta","Uno o varios de los campos están vacíos.",3);
-                        System.out.println("User introduced blank fields, aborting operation.");
+                        System.out.println("User introduced blank fields, aborting insert operation.");
                         omit = true;
                         break;
                     }
@@ -3070,13 +3209,13 @@ public class MainW extends javax.swing.JFrame {
                             exec = modifySta.executeUpdate();
                         }
                         catch(SQLException sqle) {
-                            this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                            this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
                             sqle.printStackTrace();
                         }
                     }
                     catch(NumberFormatException nfe){
                         this.message("Información incorrecta", "Uno o varios de los campos no contienen los datos correctos.", 3);
-                        System.out.println("Wrong data types introduced, aborting operation.");
+                        System.out.println("Wrong data types introduced, aborting insert operation.");
                         omit = true;
                         break;
                     }
@@ -3099,16 +3238,16 @@ public class MainW extends javax.swing.JFrame {
 
                 switch(tableName){
                     case "Resource":
-                        changeVisibility(true, 4, 2);
+                        changeVisibilityToMenu(2);
                         break;
                     case "Donor":
-                        changeVisibility(true, 8, 6);
+                        changeVisibilityToMenu(6);
                         break;
                     case "Donation":
-                        changeVisibility(true, 12, 10);
+                        changeVisibilityToMenu(10);
                         break;
                     case "Sale":
-                        changeVisibility(true, 16, 14);
+                        changeVisibilityToMenu(14);
                         break;
                     default:
                         changeVisibility(false, 17, 1);
@@ -3140,7 +3279,7 @@ public class MainW extends javax.swing.JFrame {
                         exec = bridge.querier.executeUpdate("DELETE FROM Resource WHERE ID = " + id1);
                     }
                     catch(SQLException sqle) {
-                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                        this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
                         sqle.printStackTrace();
                     }
                     break;
@@ -3150,7 +3289,7 @@ public class MainW extends javax.swing.JFrame {
                         exec = bridge.querier.executeUpdate("DELETE FROM Donor WHERE ID = " + id1);
                     }
                     catch(SQLException sqle) {
-                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                        this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
                         sqle.printStackTrace();
                     }
                     break;
@@ -3160,7 +3299,7 @@ public class MainW extends javax.swing.JFrame {
                         exec = bridge.querier.executeUpdate("DELETE FROM Donation WHERE resID = " + id1 + " AND donorID = " + id2 + " AND sendTime = '" + date + "'");
                     }
                     catch(SQLException sqle) {
-                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                        this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
                         sqle.printStackTrace();
                     }
                     break;
@@ -3170,7 +3309,7 @@ public class MainW extends javax.swing.JFrame {
                         exec = bridge.querier.executeUpdate("DELETE FROM Sale WHERE ID = " + id1);
                     }
                     catch(SQLException sqle) {
-                        this.message("Información","Error SQL: " + sqle.getMessage(),1);
+                        this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
                         sqle.printStackTrace();
                     }
                     break;
@@ -3191,16 +3330,16 @@ public class MainW extends javax.swing.JFrame {
             
             switch(tableName){
                 case "Resource":
-                    changeVisibility(true, 5, 2);
+                    changeVisibilityToMenu(2);
                     break;
                 case "Donor":
-                    changeVisibility(true, 9, 6);
+                    changeVisibilityToMenu(6);
                     break;
                 case "Donation":
-                    changeVisibility(true, 13, 9);
+                    changeVisibilityToMenu(10);
                     break;
                 case "Sale":
-                    changeVisibility(true, 17, 14);
+                    changeVisibilityToMenu(14);
                     break;
                 default:
                     changeVisibility(false, 17, 1);
@@ -3216,28 +3355,139 @@ public class MainW extends javax.swing.JFrame {
     }
     
     
-    
-    private void message(String titulo, String m, int tipo){
-        int tipoerr;
-        switch(tipo) {
-            case 1:  
-                tipoerr = JOptionPane.ERROR_MESSAGE; 
+    /*
+    =======================Functions for search purpouses=======================
+    */
+    public void tableSearch(String tableName, int factor, String text){
+        /*
+        1 - Name
+        2 - Donor
+        3 - Resource
+        4 - Date
+        */
+        DefaultTableModel tModel;
+        SQLBridge auxBridge = new SQLBridge("cooperativa.db");
+        auxBridge.startConnection();
+        ResultSet res;
+        ResultSet auxRes = null;
+        String query = "";
+        
+        System.out.println("User wants to searched for " + text + " in the table " + tableName + " and the " + factor + " category.");
+        switch(tableName){
+            case "Resource":
+                tModel = (DefaultTableModel) ResTable.getModel();
+                
+                for(int i = tModel.getRowCount() - 1; i >= 0; i--) {
+                    tModel.removeRow(i);
+                }
+                
+                if(factor == 1){
+                    query = "SELECT * FROM Resource WHERE type LIKE '%" + text + "%'";
+                    try{
+                        res = bridge.querier.executeQuery(query);
+                        while(res.next()){
+                            String lastTime = "SELECT MAX(sendTime) FROM Donation WHERE resID = (SELECT ID FROM Resource WHERE ID = " + res.getInt(1) + ")";
+                            auxRes = auxBridge.querier.executeQuery(lastTime);
+
+                            tModel.addRow(new Object[] {res.getInt(1), res.getString(2), res.getLong(3), auxRes.getString(1) } );
+                        }
+                    }
+                    catch(SQLException sqle) {
+                        this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
+                        sqle.printStackTrace();
+                    }
+                }
+                else{
+                    message("Error interno", "Ha ocurrido un error.\n(El programa ha intentado hacer una búsqueda\nque no se corresponde con esta tabla.)", 1);
+                }
                 break;
-            case 2: 
-                tipoerr = JOptionPane.INFORMATION_MESSAGE; 
+            case "Donor":
+                tModel = (DefaultTableModel) DonorTable.getModel();
+                
+                for(int i = tModel.getRowCount() - 1; i >= 0; i--) {
+                    tModel.removeRow(i);
+                }
+                
+                if(factor == 1){
+                    query = "SELECT * FROM Donor WHERE name LIKE '%" + text + "%'";
+                    try{
+                        res = bridge.querier.executeQuery(query);
+                        while(res.next()){
+                            String lastTime = "SELECT MAX(sendTime) FROM Donation WHERE donorID = (SELECT ID FROM Donor WHERE ID = " + res.getInt(1) + ")";
+                            auxRes = auxBridge.querier.executeQuery(lastTime);
+
+                            tModel.addRow(new Object[] {res.getInt(1), res.getString(2), res.getDouble(3) * 100 + "%", auxRes.getString(1)} );
+                        }
+                    }
+                    catch(SQLException sqle) {
+                        this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
+                        sqle.printStackTrace();
+                    }
+                }
+                else{
+                    message("Error interno", "Ha ocurrido un error.\n(El programa ha intentado hacer una búsqueda\nque no se corresponde con esta tabla.)", 1);
+                }
                 break;
-            case 3:
-                tipoerr = JOptionPane.WARNING_MESSAGE;
+            case "Donation":
+                tModel = (DefaultTableModel) DonaTable.getModel();
+                
+                for(int i = tModel.getRowCount() - 1; i >= 0; i--) {
+                    tModel.removeRow(i);
+                }
+                
+                if(factor == 2){
+                    
+                }
+                else if(factor == 3){
+                    query = "SELECT * FROM Donation WHERE resID = (SELECT ID FROM Resource WHERE type LIKE '%" + text + "%')";
+                    
+                    try{
+                        res = bridge.querier.executeQuery(query);
+                        
+                        while(res.next()){
+                            auxRes = auxBridge.querier.executeQuery("SELECT * FROM Donor WHERE ID = " + res.getInt(5));
+                            String donor = auxRes.getString(2);
+                            auxRes = auxBridge.querier.executeQuery("SELECT * FROM Resource WHERE ID = " + res.getInt(4));
+                            String resor = auxRes.getString(2);
+
+                            tModel.addRow(new Object[] { donor + " (" + res.getInt(5) + ")", resor + " (" + res.getInt(4) + ")", res.getLong(1), res.getInt(2), res.getString(3) });              
+                        }
+                    }
+                    catch(SQLException sqle) {
+                        this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
+                        sqle.printStackTrace();
+                    }
+                }
+                else if(factor == 4){
+                    
+                }
+                else{
+                    message("Error interno", "Ha ocurrido un error.\n(El programa ha intentado hacer una búsqueda\nque no se corresponde con esta tabla.)", 1);
+                }
                 break;
-            case 4:
-                tipoerr = JOptionPane.QUESTION_MESSAGE;
+            case "Sale":
+                tModel = (DefaultTableModel) SaleTable.getModel();
+                
+                for(int i = tModel.getRowCount() - 1; i >= 0; i--) {
+                    tModel.removeRow(i);
+                }
+                
+                if(factor == 3){
+                    
+                }
+                else if(factor == 4){
+                    
+                }
+                else{
+                    message("Error interno", "Ha ocurrido un error.\n(El programa ha intentado hacer una búsqueda\nque no se corresponde con esta tabla.)", 1);
+                }
                 break;
             default:
-                tipoerr = 1;
+                message("Error interno", "Ha ocurrido un error al intentar realizar la búsqueda\n(No se ha especificado la tabla en la que buscar)", 1);
+                break;
         }
-        
-        JOptionPane.showMessageDialog(null, m, titulo, tipoerr);
     }
+    
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

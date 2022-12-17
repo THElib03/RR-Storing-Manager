@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SaleReport" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="69b30d0e-fd34-4ab3-a120-4a6d6b748236">
+	<property name="ireport.zoom" value="2.1435888100000016"/>
+	<property name="ireport.x" value="14"/>
+	<property name="ireport.y" value="97"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT type, AVG(precio) AS price, SUM(cantidad) AS cuantity FROM Sale JOIN Resource ON (Sale.resID = Resource.ID) GROUP BY type;]]>
+	</queryString>
+	<field name="type" class="java.lang.Object"/>
+	<field name="price" class="java.lang.Object"/>
+	<field name="cuantity" class="java.lang.Object"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="efa50bce-dc1d-48ae-8032-160c947f1c6d"/>
+				<staticText>
+					<reportElement x="20" y="20" width="346" height="43" forecolor="#FFFFFF" uuid="d8ad3a70-3e54-4189-bb7a-98668c760566"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Resumen de ventas]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="39c1d576-e838-40a8-85d0-6c5b44f724a4"/>
+			</line>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="d6ee0a6d-c3ac-4781-a1dc-d6b762213edf"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Recurso]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="185" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="025b5a51-534c-41df-bafa-c8f66aba3be8"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Precio medio de venta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="370" y="0" width="185" height="20" forecolor="#006699" backcolor="#E6E6E6" uuid="36add453-ff06-4c6d-a3f5-099023a354da"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad total vendida]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="88d452ce-6a9d-437f-a394-6e2fd40389a5"/>
+			</line>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="0" y="0" width="185" height="20" uuid="7e254fd6-f81c-477f-abaf-c55cda6443f3"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{type}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="185" y="0" width="185" height="20" uuid="6235b62c-181d-4812-84d6-0273b387fd95"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{price}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="370" y="0" width="185" height="20" uuid="288958ad-e484-4b3e-9bc4-96a7ebb986cd"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cuantity}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="137">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="124" width="515" height="13" backcolor="#E6E6E6" uuid="7fdab855-db78-411e-a574-38541af92854"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página " +$V{PAGE_NUMBER}+ " de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="124" width="40" height="13" backcolor="#E6E6E6" uuid="16d268b2-0efe-4969-a2ef-631da65e8855"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="124" width="100" height="13" uuid="c867a9ee-50dc-47dd-992f-9526daa5d8e5"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<pieChart>
+				<chart>
+					<reportElement x="158" y="10" width="212" height="104" uuid="66f29119-88bd-4e8c-aeff-be2579203ac2"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<keyExpression><![CDATA[$F{type}]]></keyExpression>
+					<valueExpression><![CDATA[$F{cuantity}]]></valueExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
