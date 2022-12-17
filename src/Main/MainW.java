@@ -254,6 +254,7 @@ public class MainW extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("CooperativApp");
+        setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         setMinimumSize(new java.awt.Dimension(600, 480));
         setName("MainWFrame"); // NOI18N
         setPreferredSize(new java.awt.Dimension(600, 480));
@@ -284,27 +285,27 @@ public class MainW extends javax.swing.JFrame {
         ResTableLateralPanel.setMinimumSize(new java.awt.Dimension(120, 425));
         ResTableLateralPanel.setLayout(null);
 
-        ResTableAddBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        ResTableAddBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         ResTableAddBut.setText("Añadir");
         ResTableLateralPanel.add(ResTableAddBut);
         ResTableAddBut.setBounds(0, 10, 120, 30);
 
-        ResTableModifyBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        ResTableModifyBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         ResTableModifyBut.setText("Modificar");
         ResTableLateralPanel.add(ResTableModifyBut);
         ResTableModifyBut.setBounds(0, 60, 120, 30);
 
-        ResTableRemoveBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        ResTableRemoveBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         ResTableRemoveBut.setText("Eliminar");
         ResTableLateralPanel.add(ResTableRemoveBut);
         ResTableRemoveBut.setBounds(0, 110, 120, 30);
 
-        ResTableNameSearchText.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        ResTableNameSearchText.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         ResTableNameSearchText.setText("Nombre");
         ResTableLateralPanel.add(ResTableNameSearchText);
         ResTableNameSearchText.setBounds(0, 190, 120, 30);
 
-        ResTableBackBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        ResTableBackBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         ResTableBackBut.setText("Volver");
         ResTableLateralPanel.add(ResTableBackBut);
         ResTableBackBut.setBounds(0, 370, 120, 30);
@@ -319,12 +320,10 @@ public class MainW extends javax.swing.JFrame {
         ResTableSeparator.setBounds(120, 0, 20, 430);
 
         ResTableScrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(214, 217, 223), 3));
-        ResTableScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-        ResTableScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         ResTableScrollPane.setMinimumSize(new java.awt.Dimension(450, 415));
         ResTableScrollPane.setPreferredSize(new java.awt.Dimension(450, 415));
 
-        ResTable.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        ResTable.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         ResTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -351,14 +350,12 @@ public class MainW extends javax.swing.JFrame {
     ResTable.setPreferredSize(null);
     ResTable.setRowHeight(24);
     ResTable.setShowGrid(true);
-    ResTable.getColumnModel().getColumn(0).setMaxWidth(45);
-    ResTable.getColumnModel().getColumn(0).setMinWidth(45);
-    ResTable.getColumnModel().getColumn(1).setMaxWidth(120);
-    ResTable.getColumnModel().getColumn(1).setMinWidth(120);
-    ResTable.getColumnModel().getColumn(2).setMaxWidth(110);
-    ResTable.getColumnModel().getColumn(1).setMinWidth(110);
-    ResTable.getColumnModel().getColumn(3).setMaxWidth(150);
-    ResTable.getColumnModel().getColumn(3).setMinWidth(150);
+    ResTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+    ResTable.getColumnModel().getColumn(0).setPreferredWidth(45);
+    ResTable.getColumnModel().getColumn(1).setPreferredWidth(120);
+    ResTable.getColumnModel().getColumn(2).setPreferredWidth(110);
+    ResTable.getColumnModel().getColumn(3).setPreferredWidth(154
+    );
     ResTableScrollPane.setViewportView(ResTable);
 
     ResTablePane.add(ResTableScrollPane);
@@ -380,7 +377,7 @@ public class MainW extends javax.swing.JFrame {
     ResAddHellPanel.setMinimumSize(new java.awt.Dimension(120, 425));
     ResAddHellPanel.setLayout(null);
 
-    ResAddCancelBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResAddCancelBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResAddCancelBut.setText("Cancelar");
     ResAddCancelBut.setMaximumSize(new java.awt.Dimension(110, 30));
     ResAddCancelBut.setMinimumSize(new java.awt.Dimension(110, 30));
@@ -388,7 +385,7 @@ public class MainW extends javax.swing.JFrame {
     ResAddHellPanel.add(ResAddCancelBut);
     ResAddCancelBut.setBounds(0, 370, 120, 30);
 
-    ResAddConfirmBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResAddConfirmBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResAddConfirmBut.setText("Confirmar");
     ResAddConfirmBut.setMaximumSize(new java.awt.Dimension(110, 24));
     ResAddConfirmBut.setMinimumSize(new java.awt.Dimension(110, 24));
@@ -403,30 +400,30 @@ public class MainW extends javax.swing.JFrame {
     ResAddHeavenPanel.setMinimumSize(new java.awt.Dimension(480, 425));
     ResAddHeavenPanel.setLayout(null);
 
-    ResAddIDLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResAddIDLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResAddIDLabel.setText("Identificador:");
     ResAddHeavenPanel.add(ResAddIDLabel);
     ResAddIDLabel.setBounds(80, 50, 150, 30);
 
-    ResAddIDInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResAddIDInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResAddHeavenPanel.add(ResAddIDInput);
     ResAddIDInput.setBounds(270, 50, 130, 30);
 
-    ResAddNameLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResAddNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResAddNameLabel.setText("Nombre:");
     ResAddHeavenPanel.add(ResAddNameLabel);
     ResAddNameLabel.setBounds(80, 130, 150, 30);
 
-    ResAddNameInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResAddNameInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResAddHeavenPanel.add(ResAddNameInput);
     ResAddNameInput.setBounds(270, 130, 130, 30);
 
-    ResAddStockLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResAddStockLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResAddStockLabel.setText("Stock Restante:");
     ResAddHeavenPanel.add(ResAddStockLabel);
     ResAddStockLabel.setBounds(80, 210, 150, 30);
 
-    ResAddStockInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResAddStockInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResAddHeavenPanel.add(ResAddStockInput);
     ResAddStockInput.setBounds(270, 210, 130, 30);
 
@@ -449,7 +446,7 @@ public class MainW extends javax.swing.JFrame {
     ResModifyHellPanel.setPreferredSize(new java.awt.Dimension(120, 425));
     ResModifyHellPanel.setLayout(null);
 
-    ResModifyConfirmBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResModifyConfirmBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResModifyConfirmBut.setText("Confirmar");
     ResModifyConfirmBut.setMaximumSize(new java.awt.Dimension(110, 24));
     ResModifyConfirmBut.setMinimumSize(new java.awt.Dimension(110, 24));
@@ -457,7 +454,7 @@ public class MainW extends javax.swing.JFrame {
     ResModifyHellPanel.add(ResModifyConfirmBut);
     ResModifyConfirmBut.setBounds(0, 320, 120, 30);
 
-    ResModifyCancelBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResModifyCancelBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResModifyCancelBut.setText("Cancelar");
     ResModifyCancelBut.setMaximumSize(new java.awt.Dimension(110, 30));
     ResModifyCancelBut.setMinimumSize(new java.awt.Dimension(110, 30));
@@ -472,30 +469,30 @@ public class MainW extends javax.swing.JFrame {
     ResModifyHeavenPanel.setPreferredSize(new java.awt.Dimension(480, 425));
     ResModifyHeavenPanel.setLayout(null);
 
-    ResModifyIDLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResModifyIDLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResModifyIDLabel.setText("Identificador:");
     ResModifyHeavenPanel.add(ResModifyIDLabel);
     ResModifyIDLabel.setBounds(80, 50, 190, 30);
 
-    ResModifyIDInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResModifyIDInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResModifyHeavenPanel.add(ResModifyIDInput);
     ResModifyIDInput.setBounds(270, 50, 130, 30);
 
-    ResModifyNameLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResModifyNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResModifyNameLabel.setText("Nuevo Nombre:");
     ResModifyHeavenPanel.add(ResModifyNameLabel);
     ResModifyNameLabel.setBounds(80, 130, 190, 30);
 
-    ResModifyNameInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResModifyNameInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResModifyHeavenPanel.add(ResModifyNameInput);
     ResModifyNameInput.setBounds(270, 130, 130, 30);
 
-    ResModifyStockLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResModifyStockLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResModifyStockLabel.setText("Nuevo Stock:");
     ResModifyHeavenPanel.add(ResModifyStockLabel);
     ResModifyStockLabel.setBounds(80, 210, 190, 30);
 
-    ResModifyStockInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResModifyStockInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResModifyHeavenPanel.add(ResModifyStockInput);
     ResModifyStockInput.setBounds(270, 210, 130, 30);
 
@@ -520,7 +517,7 @@ public class MainW extends javax.swing.JFrame {
     ResRemoveHellPanel.setRequestFocusEnabled(false);
     ResRemoveHellPanel.setLayout(null);
 
-    ResRemoveConfirmBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResRemoveConfirmBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResRemoveConfirmBut.setText("Confirmar");
     ResRemoveConfirmBut.setMaximumSize(new java.awt.Dimension(110, 24));
     ResRemoveConfirmBut.setMinimumSize(new java.awt.Dimension(110, 24));
@@ -528,7 +525,7 @@ public class MainW extends javax.swing.JFrame {
     ResRemoveHellPanel.add(ResRemoveConfirmBut);
     ResRemoveConfirmBut.setBounds(0, 320, 120, 30);
 
-    ResRemoveCancelBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResRemoveCancelBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResRemoveCancelBut.setText("Cancelar");
     ResRemoveCancelBut.setMaximumSize(new java.awt.Dimension(110, 30));
     ResRemoveCancelBut.setMinimumSize(new java.awt.Dimension(110, 30));
@@ -543,56 +540,56 @@ public class MainW extends javax.swing.JFrame {
     ResRemoveHeavenPanel.setPreferredSize(new java.awt.Dimension(480, 425));
     ResRemoveHeavenPanel.setLayout(null);
 
-    ResRemoveIDLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResRemoveIDLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResRemoveIDLabel.setText("Identificador:");
     ResRemoveHeavenPanel.add(ResRemoveIDLabel);
     ResRemoveIDLabel.setBounds(80, 50, 150, 30);
 
-    ResRemoveIDInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResRemoveIDInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResRemoveHeavenPanel.add(ResRemoveIDInput);
     ResRemoveIDInput.setBounds(270, 50, 130, 30);
 
-    ResRemoveNameLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResRemoveNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResRemoveNameLabel.setText("Nombre:");
     ResRemoveHeavenPanel.add(ResRemoveNameLabel);
     ResRemoveNameLabel.setBounds(80, 130, 150, 30);
 
-    ResRemoveNameInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResRemoveNameInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResRemoveHeavenPanel.add(ResRemoveNameInput);
     ResRemoveNameInput.setBounds(270, 130, 130, 30);
 
-    ResRemoveStockLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResRemoveStockLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResRemoveStockLabel.setText("Stock Restante:");
     ResRemoveHeavenPanel.add(ResRemoveStockLabel);
     ResRemoveStockLabel.setBounds(80, 210, 150, 30);
 
-    ResRemoveStockInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResRemoveStockInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResRemoveHeavenPanel.add(ResRemoveStockInput);
     ResRemoveStockInput.setBounds(270, 210, 130, 30);
 
-    ResRemoveQuestionLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResRemoveQuestionLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResRemoveQuestionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     ResRemoveQuestionLabel.setText("¿Desea calcular la venta del");
     ResRemoveHeavenPanel.add(ResRemoveQuestionLabel);
     ResRemoveQuestionLabel.setBounds(130, 290, 220, 30);
 
-    ResRemoveQuestion2Label.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResRemoveQuestion2Label.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResRemoveQuestion2Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     ResRemoveQuestion2Label.setText("stock de este material?");
     ResRemoveHeavenPanel.add(ResRemoveQuestion2Label);
     ResRemoveQuestion2Label.setBounds(130, 310, 220, 30);
 
-    ResRemoveRadioYesBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResRemoveRadioYesBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResRemoveRadioYesBut.setMnemonic('s');
     ResRemoveRadioYesBut.setText("Si");
     ResRemoveHeavenPanel.add(ResRemoveRadioYesBut);
-    ResRemoveRadioYesBut.setBounds(150, 350, 50, 28);
+    ResRemoveRadioYesBut.setBounds(150, 350, 50, 29);
 
-    ResRemoveRadioNoBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    ResRemoveRadioNoBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     ResRemoveRadioNoBut.setMnemonic('n');
     ResRemoveRadioNoBut.setText("No");
     ResRemoveHeavenPanel.add(ResRemoveRadioNoBut);
-    ResRemoveRadioNoBut.setBounds(280, 350, 50, 28);
+    ResRemoveRadioNoBut.setBounds(280, 350, 50, 29);
 
     ResRemovePane.add(ResRemoveHeavenPanel);
     ResRemoveHeavenPanel.setBounds(120, 0, 480, 425);
@@ -607,27 +604,27 @@ public class MainW extends javax.swing.JFrame {
     DonorTableLateralPanel.setMinimumSize(new java.awt.Dimension(120, 425));
     DonorTableLateralPanel.setLayout(null);
 
-    DonorTableAddBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorTableAddBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorTableAddBut.setText("Añadir");
     DonorTableLateralPanel.add(DonorTableAddBut);
     DonorTableAddBut.setBounds(0, 10, 120, 30);
 
-    DonorTableModifyBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorTableModifyBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorTableModifyBut.setText("Modificar");
     DonorTableLateralPanel.add(DonorTableModifyBut);
     DonorTableModifyBut.setBounds(0, 60, 120, 30);
 
-    DonorTableRemoveBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorTableRemoveBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorTableRemoveBut.setText("Eliminar");
     DonorTableLateralPanel.add(DonorTableRemoveBut);
     DonorTableRemoveBut.setBounds(0, 110, 120, 30);
 
-    DonorTableNameSearchText.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorTableNameSearchText.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorTableNameSearchText.setText("Nombre");
     DonorTableLateralPanel.add(DonorTableNameSearchText);
     DonorTableNameSearchText.setBounds(0, 190, 120, 30);
 
-    DonorTableBackBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorTableBackBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorTableBackBut.setText("Volver");
     DonorTableLateralPanel.add(DonorTableBackBut);
     DonorTableBackBut.setBounds(0, 370, 120, 30);
@@ -642,13 +639,11 @@ public class MainW extends javax.swing.JFrame {
     DonorTableSeparator.setBounds(120, 0, 20, 425);
 
     DonorTableScrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(214, 217, 223), 3));
-    DonorTableScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-    DonorTableScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
     DonorTableScrollPane.setMinimumSize(new java.awt.Dimension(450, 415));
     DonorTableScrollPane.setPreferredSize(new java.awt.Dimension(450, 415));
     DonorTableScrollPane.setRequestFocusEnabled(false);
 
-    DonorTable.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorTable.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorTable.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {
             {null, null, null, null},
@@ -671,6 +666,12 @@ public class MainW extends javax.swing.JFrame {
     });
     DonorTable.setMinimumSize(null);
     DonorTable.setPreferredSize(null);
+    DonorTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+    DonorTable.getColumnModel().getColumn(0).setPreferredWidth(45);
+    DonorTable.getColumnModel().getColumn(1).setPreferredWidth(130);
+    DonorTable.getColumnModel().getColumn(2).setPreferredWidth(90);
+    DonorTable.getColumnModel().getColumn(3).setPreferredWidth(164
+    );
     DonorTable.setRowHeight(24);
     DonorTable.setShowGrid(true);
     DonorTableScrollPane.setViewportView(DonorTable);
@@ -694,7 +695,7 @@ public class MainW extends javax.swing.JFrame {
     DonorAddHellPanel.setPreferredSize(new java.awt.Dimension(120, 425));
     DonorAddHellPanel.setLayout(null);
 
-    DonorAddConfirmBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorAddConfirmBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorAddConfirmBut.setText("Confirmar");
     DonorAddConfirmBut.setMaximumSize(new java.awt.Dimension(110, 24));
     DonorAddConfirmBut.setMinimumSize(new java.awt.Dimension(110, 24));
@@ -702,7 +703,7 @@ public class MainW extends javax.swing.JFrame {
     DonorAddHellPanel.add(DonorAddConfirmBut);
     DonorAddConfirmBut.setBounds(0, 320, 120, 30);
 
-    DonorAddCancelBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorAddCancelBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorAddCancelBut.setText("Cancelar");
     DonorAddCancelBut.setMaximumSize(new java.awt.Dimension(110, 30));
     DonorAddCancelBut.setMinimumSize(new java.awt.Dimension(110, 30));
@@ -718,30 +719,30 @@ public class MainW extends javax.swing.JFrame {
     DonorAddHeavenPanel.setVerifyInputWhenFocusTarget(false);
     DonorAddHeavenPanel.setLayout(null);
 
-    DonorAddIDLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorAddIDLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorAddIDLabel.setText("Identificador del Donante:");
     DonorAddHeavenPanel.add(DonorAddIDLabel);
     DonorAddIDLabel.setBounds(80, 60, 170, 30);
 
-    DonorAddIDInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorAddIDInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorAddHeavenPanel.add(DonorAddIDInput);
     DonorAddIDInput.setBounds(270, 60, 130, 30);
 
-    DonorAddNameLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorAddNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorAddNameLabel.setText("Nombre del Donante:");
     DonorAddHeavenPanel.add(DonorAddNameLabel);
     DonorAddNameLabel.setBounds(80, 140, 170, 30);
 
-    DonorAddNameInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorAddNameInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorAddHeavenPanel.add(DonorAddNameInput);
     DonorAddNameInput.setBounds(270, 140, 130, 30);
 
-    DonorAddRateLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorAddRateLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorAddRateLabel.setText("Tasa de Ventas:");
     DonorAddHeavenPanel.add(DonorAddRateLabel);
     DonorAddRateLabel.setBounds(80, 220, 170, 30);
 
-    DonorAddRateInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorAddRateInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorAddHeavenPanel.add(DonorAddRateInput);
     DonorAddRateInput.setBounds(270, 220, 130, 30);
 
@@ -763,7 +764,7 @@ public class MainW extends javax.swing.JFrame {
     DonorModifyHellPanel.setMinimumSize(new java.awt.Dimension(120, 425));
     DonorModifyHellPanel.setLayout(null);
 
-    DonorModifyConfirmBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorModifyConfirmBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorModifyConfirmBut.setText("Confirmar");
     DonorModifyConfirmBut.setMaximumSize(new java.awt.Dimension(110, 24));
     DonorModifyConfirmBut.setMinimumSize(new java.awt.Dimension(120, 24));
@@ -771,7 +772,7 @@ public class MainW extends javax.swing.JFrame {
     DonorModifyHellPanel.add(DonorModifyConfirmBut);
     DonorModifyConfirmBut.setBounds(0, 320, 120, 30);
 
-    DonorModifyCancelBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorModifyCancelBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorModifyCancelBut.setText("Cancelar");
     DonorModifyCancelBut.setMaximumSize(new java.awt.Dimension(110, 30));
     DonorModifyCancelBut.setMinimumSize(new java.awt.Dimension(110, 30));
@@ -785,30 +786,30 @@ public class MainW extends javax.swing.JFrame {
     DonorModifyHeavenPanel.setMinimumSize(new java.awt.Dimension(480, 425));
     DonorModifyHeavenPanel.setLayout(null);
 
-    DonorModifyIDLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorModifyIDLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorModifyIDLabel.setText("ID del Donante:");
     DonorModifyHeavenPanel.add(DonorModifyIDLabel);
     DonorModifyIDLabel.setBounds(80, 60, 160, 30);
 
-    DonorModifyIDInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorModifyIDInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorModifyHeavenPanel.add(DonorModifyIDInput);
     DonorModifyIDInput.setBounds(270, 60, 130, 30);
 
-    DonorModifyNameLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorModifyNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorModifyNameLabel.setText("Nuevo Nombre:");
     DonorModifyHeavenPanel.add(DonorModifyNameLabel);
     DonorModifyNameLabel.setBounds(80, 140, 160, 30);
 
-    DonorModifyNameInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorModifyNameInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorModifyHeavenPanel.add(DonorModifyNameInput);
     DonorModifyNameInput.setBounds(270, 140, 130, 30);
 
-    DonorModifyRateLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorModifyRateLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorModifyRateLabel.setText("Nueva Tasa de Ventas:");
     DonorModifyHeavenPanel.add(DonorModifyRateLabel);
     DonorModifyRateLabel.setBounds(80, 220, 160, 30);
 
-    DonorModifyRateInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorModifyRateInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorModifyHeavenPanel.add(DonorModifyRateInput);
     DonorModifyRateInput.setBounds(270, 220, 130, 30);
 
@@ -830,7 +831,7 @@ public class MainW extends javax.swing.JFrame {
     DonorRemoveHellPanel.setMinimumSize(new java.awt.Dimension(120, 425));
     DonorRemoveHellPanel.setLayout(null);
 
-    DonorRemoveConfirmBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorRemoveConfirmBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorRemoveConfirmBut.setText("Confirmar");
     DonorRemoveConfirmBut.setMaximumSize(new java.awt.Dimension(120, 24));
     DonorRemoveConfirmBut.setMinimumSize(new java.awt.Dimension(120, 24));
@@ -838,7 +839,7 @@ public class MainW extends javax.swing.JFrame {
     DonorRemoveHellPanel.add(DonorRemoveConfirmBut);
     DonorRemoveConfirmBut.setBounds(0, 320, 120, 30);
 
-    DonorRemoveCancelBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorRemoveCancelBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorRemoveCancelBut.setText("Cancelar");
     DonorRemoveCancelBut.setMaximumSize(new java.awt.Dimension(120, 30));
     DonorRemoveCancelBut.setMinimumSize(new java.awt.Dimension(120, 30));
@@ -853,56 +854,56 @@ public class MainW extends javax.swing.JFrame {
     DonorRemoveHeavenPanel.setPreferredSize(new java.awt.Dimension(480, 425));
     DonorRemoveHeavenPanel.setLayout(null);
 
-    DonorRemoveIDLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorRemoveIDLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorRemoveIDLabel.setText("Identificador del donante:");
     DonorRemoveHeavenPanel.add(DonorRemoveIDLabel);
     DonorRemoveIDLabel.setBounds(80, 60, 170, 30);
 
-    DonorRemoveIDInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorRemoveIDInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorRemoveHeavenPanel.add(DonorRemoveIDInput);
     DonorRemoveIDInput.setBounds(270, 60, 130, 30);
 
-    DonorRemoveNameLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorRemoveNameLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorRemoveNameLabel.setText("Nombre del Donante:");
     DonorRemoveHeavenPanel.add(DonorRemoveNameLabel);
     DonorRemoveNameLabel.setBounds(80, 140, 170, 30);
 
-    DonorRemoveNameInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorRemoveNameInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorRemoveHeavenPanel.add(DonorRemoveNameInput);
     DonorRemoveNameInput.setBounds(270, 140, 130, 30);
 
-    DonorRemoveRateLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorRemoveRateLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorRemoveRateLabel.setText("Tasa de Ventas:");
     DonorRemoveHeavenPanel.add(DonorRemoveRateLabel);
     DonorRemoveRateLabel.setBounds(80, 220, 170, 30);
 
-    DonorRemoveRateInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorRemoveRateInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorRemoveHeavenPanel.add(DonorRemoveRateInput);
     DonorRemoveRateInput.setBounds(270, 220, 130, 30);
 
-    DonorRemoveQuestionLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorRemoveQuestionLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorRemoveQuestionLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     DonorRemoveQuestionLabel.setText("¿Desea calcular la venta del");
     DonorRemoveHeavenPanel.add(DonorRemoveQuestionLabel);
     DonorRemoveQuestionLabel.setBounds(130, 290, 220, 30);
 
-    DonorRemoveQuestion2Label.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorRemoveQuestion2Label.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorRemoveQuestion2Label.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
     DonorRemoveQuestion2Label.setText("stock de este donante?");
     DonorRemoveHeavenPanel.add(DonorRemoveQuestion2Label);
     DonorRemoveQuestion2Label.setBounds(130, 310, 220, 30);
 
-    DonorRemoveRadioYesBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorRemoveRadioYesBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorRemoveRadioYesBut.setMnemonic('s');
     DonorRemoveRadioYesBut.setText("Si");
     DonorRemoveHeavenPanel.add(DonorRemoveRadioYesBut);
-    DonorRemoveRadioYesBut.setBounds(150, 350, 50, 28);
+    DonorRemoveRadioYesBut.setBounds(150, 350, 50, 29);
 
-    DonorRemoveRadioNoBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonorRemoveRadioNoBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonorRemoveRadioNoBut.setMnemonic('n');
     DonorRemoveRadioNoBut.setText("No");
     DonorRemoveHeavenPanel.add(DonorRemoveRadioNoBut);
-    DonorRemoveRadioNoBut.setBounds(280, 350, 50, 28);
+    DonorRemoveRadioNoBut.setBounds(280, 350, 50, 29);
 
     DonorRemovePane.add(DonorRemoveHeavenPanel);
     DonorRemoveHeavenPanel.setBounds(120, 0, 480, 425);
@@ -915,37 +916,37 @@ public class MainW extends javax.swing.JFrame {
 
     DonaTableLateralPanel.setLayout(null);
 
-    DonaTableAddBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaTableAddBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaTableAddBut.setText("Añadir");
     DonaTableLateralPanel.add(DonaTableAddBut);
     DonaTableAddBut.setBounds(0, 10, 120, 30);
 
-    DonaTableModifyBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaTableModifyBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaTableModifyBut.setText("Modificar");
     DonaTableLateralPanel.add(DonaTableModifyBut);
     DonaTableModifyBut.setBounds(0, 60, 120, 30);
 
-    DonaTableRemoveBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaTableRemoveBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaTableRemoveBut.setText("Eliminar");
     DonaTableLateralPanel.add(DonaTableRemoveBut);
     DonaTableRemoveBut.setBounds(0, 110, 120, 30);
 
-    DonaTableDonorSearchText.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaTableDonorSearchText.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaTableDonorSearchText.setText("Donante");
     DonaTableLateralPanel.add(DonaTableDonorSearchText);
     DonaTableDonorSearchText.setBounds(0, 190, 120, 30);
 
-    DonaTableResourceSearchText.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaTableResourceSearchText.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaTableResourceSearchText.setText("Recurso");
     DonaTableLateralPanel.add(DonaTableResourceSearchText);
     DonaTableResourceSearchText.setBounds(0, 240, 120, 30);
 
-    DonaTableDateSearchText.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaTableDateSearchText.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaTableDateSearchText.setText("Fecha");
     DonaTableLateralPanel.add(DonaTableDateSearchText);
     DonaTableDateSearchText.setBounds(0, 290, 120, 30);
 
-    DonaTableBackBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaTableBackBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaTableBackBut.setText("Volver");
     DonaTableLateralPanel.add(DonaTableBackBut);
     DonaTableBackBut.setBounds(0, 370, 120, 30);
@@ -958,12 +959,10 @@ public class MainW extends javax.swing.JFrame {
     DonaTableSeparator.setBounds(120, 0, 20, 460);
 
     DonaTableScrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(214, 217, 223), 3));
-    DonaTableScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-    DonaTableScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
     DonaTableScrollPane.setMinimumSize(new java.awt.Dimension(450, 415));
     DonaTableScrollPane.setPreferredSize(new java.awt.Dimension(450, 415));
 
-    DonaTable.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaTable.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaTable.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {
             {null, null, null, null, null},
@@ -984,9 +983,17 @@ public class MainW extends javax.swing.JFrame {
             return canEdit [columnIndex];
         }
     });
+    DonaTable.setMaximumSize(null);
     DonaTable.setMinimumSize(null);
     DonaTable.setName("ResTable"); // NOI18N
     DonaTable.setPreferredSize(null);
+    DonaTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+    DonaTable.getColumnModel().getColumn(0).setPreferredWidth(125);
+    DonaTable.getColumnModel().getColumn(1).setPreferredWidth(125);
+    DonaTable.getColumnModel().getColumn(2).setPreferredWidth(120);
+    DonaTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+    DonaTable.getColumnModel().getColumn(4).setPreferredWidth(155
+    );
     DonaTable.setRowHeight(24);
     DonaTable.setShowGrid(true);
     DonaTableScrollPane.setViewportView(DonaTable);
@@ -1009,7 +1016,7 @@ public class MainW extends javax.swing.JFrame {
     DonaAddHellPanel.setMinimumSize(new java.awt.Dimension(120, 425));
     DonaAddHellPanel.setLayout(null);
 
-    DonaAddConfirmBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaAddConfirmBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaAddConfirmBut.setText("Confirmar");
     DonaAddConfirmBut.setMaximumSize(new java.awt.Dimension(120, 24));
     DonaAddConfirmBut.setMinimumSize(new java.awt.Dimension(120, 24));
@@ -1017,7 +1024,7 @@ public class MainW extends javax.swing.JFrame {
     DonaAddHellPanel.add(DonaAddConfirmBut);
     DonaAddConfirmBut.setBounds(0, 320, 120, 30);
 
-    DonaAddCancelBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaAddCancelBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaAddCancelBut.setText("Cancelar");
     DonaAddCancelBut.setMaximumSize(new java.awt.Dimension(120, 30));
     DonaAddCancelBut.setMinimumSize(new java.awt.Dimension(120, 30));
@@ -1031,39 +1038,39 @@ public class MainW extends javax.swing.JFrame {
     DonaAddHeavenPanel.setMinimumSize(new java.awt.Dimension(480, 425));
     DonaAddHeavenPanel.setLayout(null);
 
-    DonaAddDonorLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaAddDonorLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaAddDonorLabel.setText("Donante:");
     DonaAddHeavenPanel.add(DonaAddDonorLabel);
     DonaAddDonorLabel.setBounds(80, 60, 140, 30);
 
-    DonaAddDonorInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaAddDonorInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaAddHeavenPanel.add(DonaAddDonorInput);
     DonaAddDonorInput.setBounds(270, 60, 130, 30);
 
-    DonaAddResourceLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaAddResourceLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaAddResourceLabel.setText("Recurso Donado:");
     DonaAddHeavenPanel.add(DonaAddResourceLabel);
     DonaAddResourceLabel.setBounds(80, 140, 140, 30);
 
-    DonaAddResourceInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaAddResourceInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaAddHeavenPanel.add(DonaAddResourceInput);
     DonaAddResourceInput.setBounds(270, 140, 130, 30);
 
-    DonaAddCuantityLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaAddCuantityLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaAddCuantityLabel.setText("Cantidad:");
     DonaAddHeavenPanel.add(DonaAddCuantityLabel);
     DonaAddCuantityLabel.setBounds(80, 220, 140, 30);
 
-    DonaAddCuantityInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaAddCuantityInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaAddHeavenPanel.add(DonaAddCuantityInput);
     DonaAddCuantityInput.setBounds(270, 220, 130, 30);
 
-    DonaAddPriceLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaAddPriceLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaAddPriceLabel.setText("Precio Mínimo:");
     DonaAddHeavenPanel.add(DonaAddPriceLabel);
     DonaAddPriceLabel.setBounds(80, 300, 140, 30);
 
-    DonaAddPriceInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaAddPriceInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaAddHeavenPanel.add(DonaAddPriceInput);
     DonaAddPriceInput.setBounds(270, 300, 130, 30);
 
@@ -1085,7 +1092,7 @@ public class MainW extends javax.swing.JFrame {
     DonaModifyHellPanel.setMinimumSize(new java.awt.Dimension(120, 425));
     DonaModifyHellPanel.setLayout(null);
 
-    DonaModifyConfirmBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaModifyConfirmBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaModifyConfirmBut.setText("Confirmar");
     DonaModifyConfirmBut.setMaximumSize(new java.awt.Dimension(120, 24));
     DonaModifyConfirmBut.setMinimumSize(new java.awt.Dimension(120, 24));
@@ -1093,7 +1100,7 @@ public class MainW extends javax.swing.JFrame {
     DonaModifyHellPanel.add(DonaModifyConfirmBut);
     DonaModifyConfirmBut.setBounds(0, 320, 120, 30);
 
-    DonaModifyCancelBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaModifyCancelBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaModifyCancelBut.setText("Cancelar");
     DonaModifyCancelBut.setMaximumSize(new java.awt.Dimension(120, 30));
     DonaModifyCancelBut.setMinimumSize(new java.awt.Dimension(120, 30));
@@ -1107,39 +1114,39 @@ public class MainW extends javax.swing.JFrame {
     DonaModifyHeavenPanel.setMinimumSize(new java.awt.Dimension(480, 425));
     DonaModifyHeavenPanel.setLayout(null);
 
-    DonaModifyDonorLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaModifyDonorLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaModifyDonorLabel.setText("Nuevo donante:");
     DonaModifyHeavenPanel.add(DonaModifyDonorLabel);
     DonaModifyDonorLabel.setBounds(80, 60, 140, 30);
 
-    DonaModifyDonorInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaModifyDonorInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaModifyHeavenPanel.add(DonaModifyDonorInput);
     DonaModifyDonorInput.setBounds(270, 60, 130, 30);
 
-    DonaModifyResourceLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaModifyResourceLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaModifyResourceLabel.setText("Nuevo Recurso:");
     DonaModifyHeavenPanel.add(DonaModifyResourceLabel);
     DonaModifyResourceLabel.setBounds(80, 140, 140, 30);
 
-    DonaModifyResourceInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaModifyResourceInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaModifyHeavenPanel.add(DonaModifyResourceInput);
     DonaModifyResourceInput.setBounds(270, 140, 130, 30);
 
-    DonaModifyCuantityLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaModifyCuantityLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaModifyCuantityLabel.setText("Nueva Cantidad:");
     DonaModifyHeavenPanel.add(DonaModifyCuantityLabel);
     DonaModifyCuantityLabel.setBounds(80, 220, 140, 30);
 
-    DonaModifyCuantityInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaModifyCuantityInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaModifyHeavenPanel.add(DonaModifyCuantityInput);
     DonaModifyCuantityInput.setBounds(270, 220, 130, 30);
 
-    DonaModifyPriceLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaModifyPriceLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaModifyPriceLabel.setText("Nuevo Precio Mínimo:");
     DonaModifyHeavenPanel.add(DonaModifyPriceLabel);
     DonaModifyPriceLabel.setBounds(80, 300, 140, 30);
 
-    DonaModifyPriceInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaModifyPriceInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaModifyHeavenPanel.add(DonaModifyPriceInput);
     DonaModifyPriceInput.setBounds(270, 300, 130, 30);
 
@@ -1161,7 +1168,7 @@ public class MainW extends javax.swing.JFrame {
     DonaRemoveHellPanel.setMinimumSize(new java.awt.Dimension(120, 425));
     DonaRemoveHellPanel.setLayout(null);
 
-    DonaRemoveConfirmBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaRemoveConfirmBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaRemoveConfirmBut.setText("Confirmar");
     DonaRemoveConfirmBut.setMaximumSize(new java.awt.Dimension(120, 24));
     DonaRemoveConfirmBut.setMinimumSize(new java.awt.Dimension(120, 24));
@@ -1169,7 +1176,7 @@ public class MainW extends javax.swing.JFrame {
     DonaRemoveHellPanel.add(DonaRemoveConfirmBut);
     DonaRemoveConfirmBut.setBounds(0, 320, 120, 30);
 
-    DonaRemoveCancelBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaRemoveCancelBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaRemoveCancelBut.setText("Cancelar");
     DonaRemoveCancelBut.setMaximumSize(new java.awt.Dimension(120, 30));
     DonaRemoveCancelBut.setMinimumSize(new java.awt.Dimension(120, 30));
@@ -1183,39 +1190,39 @@ public class MainW extends javax.swing.JFrame {
     DonaRemoveHeavenPanel.setMinimumSize(new java.awt.Dimension(480, 425));
     DonaRemoveHeavenPanel.setLayout(null);
 
-    DonaRemoveDonorLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaRemoveDonorLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaRemoveDonorLabel.setText("Donante:");
     DonaRemoveHeavenPanel.add(DonaRemoveDonorLabel);
     DonaRemoveDonorLabel.setBounds(80, 60, 140, 30);
 
-    DonaRemoveDonorInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaRemoveDonorInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaRemoveHeavenPanel.add(DonaRemoveDonorInput);
     DonaRemoveDonorInput.setBounds(270, 60, 130, 30);
 
-    DonaRemoveResourceLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaRemoveResourceLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaRemoveResourceLabel.setText("Recurso:");
     DonaRemoveHeavenPanel.add(DonaRemoveResourceLabel);
     DonaRemoveResourceLabel.setBounds(80, 140, 140, 30);
 
-    DonaRemoveResourceInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaRemoveResourceInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaRemoveHeavenPanel.add(DonaRemoveResourceInput);
     DonaRemoveResourceInput.setBounds(270, 140, 130, 30);
 
-    DonaRemoveCuantityLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaRemoveCuantityLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaRemoveCuantityLabel.setText("Cantidad:");
     DonaRemoveHeavenPanel.add(DonaRemoveCuantityLabel);
     DonaRemoveCuantityLabel.setBounds(80, 220, 140, 30);
 
-    DonaRemoveCuantityInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaRemoveCuantityInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaRemoveHeavenPanel.add(DonaRemoveCuantityInput);
     DonaRemoveCuantityInput.setBounds(270, 220, 130, 30);
 
-    DonaRemovePriceLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaRemovePriceLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaRemovePriceLabel.setText("Precio Mínimo:");
     DonaRemoveHeavenPanel.add(DonaRemovePriceLabel);
     DonaRemovePriceLabel.setBounds(80, 300, 140, 30);
 
-    DonaRemovePriceInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    DonaRemovePriceInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     DonaRemoveHeavenPanel.add(DonaRemovePriceInput);
     DonaRemovePriceInput.setBounds(270, 300, 130, 30);
 
@@ -1231,32 +1238,32 @@ public class MainW extends javax.swing.JFrame {
 
     SaleTableLateralPanel.setLayout(null);
 
-    SaleTableAddBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleTableAddBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleTableAddBut.setText("Añadir");
     SaleTableLateralPanel.add(SaleTableAddBut);
     SaleTableAddBut.setBounds(0, 10, 120, 30);
 
-    SaleTableModifyBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleTableModifyBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleTableModifyBut.setText("Modificar");
     SaleTableLateralPanel.add(SaleTableModifyBut);
     SaleTableModifyBut.setBounds(0, 60, 120, 30);
 
-    SaleTableRemoveBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleTableRemoveBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleTableRemoveBut.setText("Eliminar");
     SaleTableLateralPanel.add(SaleTableRemoveBut);
     SaleTableRemoveBut.setBounds(0, 110, 120, 30);
 
-    SaleTableResourceSearchText.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleTableResourceSearchText.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleTableResourceSearchText.setText("Recurso");
     SaleTableLateralPanel.add(SaleTableResourceSearchText);
     SaleTableResourceSearchText.setBounds(0, 190, 120, 30);
 
-    SaleTableDateSearchText.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleTableDateSearchText.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleTableDateSearchText.setText("Fecha");
     SaleTableLateralPanel.add(SaleTableDateSearchText);
     SaleTableDateSearchText.setBounds(0, 240, 120, 30);
 
-    SaleTableBackBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleTableBackBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleTableBackBut.setText("Volver");
     SaleTableLateralPanel.add(SaleTableBackBut);
     SaleTableBackBut.setBounds(0, 370, 120, 30);
@@ -1269,12 +1276,10 @@ public class MainW extends javax.swing.JFrame {
     SaleTableSeparator.setBounds(120, 0, 20, 460);
 
     SaleTableScrollPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(214, 217, 223), 3));
-    SaleTableScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
-    SaleTableScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
     SaleTableScrollPane.setMinimumSize(new java.awt.Dimension(450, 415));
     SaleTableScrollPane.setPreferredSize(new java.awt.Dimension(450, 415));
 
-    SaleTable.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleTable.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleTable.setModel(new javax.swing.table.DefaultTableModel(
         new Object [][] {
             {null, null, null, null, null},
@@ -1283,7 +1288,7 @@ public class MainW extends javax.swing.JFrame {
             {null, null, null, null, null}
         },
         new String [] {
-            "ID Venta", "Material (ID)", "Cantidad", "Precio", "Fecha y Hora"
+            "ID", "Material (ID)", "Cantidad", "Precio", "Fecha y Hora"
         }
     )
     {
@@ -1298,6 +1303,13 @@ public class MainW extends javax.swing.JFrame {
     SaleTable.setAutoscrolls(false);
     SaleTable.setMinimumSize(null);
     SaleTable.setPreferredSize(null);
+    SaleTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+    SaleTable.getColumnModel().getColumn(0).setPreferredWidth(45);
+    SaleTable.getColumnModel().getColumn(1).setPreferredWidth(125);
+    SaleTable.getColumnModel().getColumn(2).setPreferredWidth(125);
+    SaleTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+    SaleTable.getColumnModel().getColumn(4).setPreferredWidth(155
+    );
     SaleTable.setRowHeight(24);
     SaleTable.setShowGrid(true);
     SaleTableScrollPane.setViewportView(SaleTable);
@@ -1320,7 +1332,7 @@ public class MainW extends javax.swing.JFrame {
     SaleAddHellPanel.setMinimumSize(new java.awt.Dimension(120, 425));
     SaleAddHellPanel.setLayout(null);
 
-    SaleAddConfirmBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleAddConfirmBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleAddConfirmBut.setText("Confirmar");
     SaleAddConfirmBut.setMaximumSize(new java.awt.Dimension(120, 24));
     SaleAddConfirmBut.setMinimumSize(new java.awt.Dimension(120, 24));
@@ -1328,7 +1340,7 @@ public class MainW extends javax.swing.JFrame {
     SaleAddHellPanel.add(SaleAddConfirmBut);
     SaleAddConfirmBut.setBounds(0, 320, 120, 30);
 
-    SaleAddCancelBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleAddCancelBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleAddCancelBut.setText("Cancelar");
     SaleAddCancelBut.setMaximumSize(new java.awt.Dimension(120, 30));
     SaleAddCancelBut.setMinimumSize(new java.awt.Dimension(120, 30));
@@ -1342,39 +1354,39 @@ public class MainW extends javax.swing.JFrame {
     SaleAddHeavenPanel.setMinimumSize(new java.awt.Dimension(480, 425));
     SaleAddHeavenPanel.setLayout(null);
 
-    SaleAddIDLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleAddIDLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleAddIDLabel.setText("ID de Venta:");
     SaleAddHeavenPanel.add(SaleAddIDLabel);
     SaleAddIDLabel.setBounds(80, 60, 140, 30);
 
-    SaleAddIDInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleAddIDInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleAddHeavenPanel.add(SaleAddIDInput);
     SaleAddIDInput.setBounds(270, 60, 130, 30);
 
-    SaleAddResourceLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleAddResourceLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleAddResourceLabel.setText("Recurso:");
     SaleAddHeavenPanel.add(SaleAddResourceLabel);
     SaleAddResourceLabel.setBounds(80, 140, 140, 30);
 
-    SaleAddResourceInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleAddResourceInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleAddHeavenPanel.add(SaleAddResourceInput);
     SaleAddResourceInput.setBounds(270, 140, 130, 30);
 
-    SaleAddCuantityLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleAddCuantityLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleAddCuantityLabel.setText("Cantidad:");
     SaleAddHeavenPanel.add(SaleAddCuantityLabel);
     SaleAddCuantityLabel.setBounds(80, 220, 140, 30);
 
-    SaleAddCuantityInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleAddCuantityInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleAddHeavenPanel.add(SaleAddCuantityInput);
     SaleAddCuantityInput.setBounds(270, 220, 130, 30);
 
-    SaleAddPriceLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleAddPriceLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleAddPriceLabel.setText("Precio:");
     SaleAddHeavenPanel.add(SaleAddPriceLabel);
     SaleAddPriceLabel.setBounds(80, 300, 140, 30);
 
-    SaleAddPriceInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleAddPriceInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleAddHeavenPanel.add(SaleAddPriceInput);
     SaleAddPriceInput.setBounds(270, 300, 130, 30);
 
@@ -1396,7 +1408,7 @@ public class MainW extends javax.swing.JFrame {
     SaleModifyHellPanel.setMinimumSize(new java.awt.Dimension(120, 425));
     SaleModifyHellPanel.setLayout(null);
 
-    SaleModifyConfirmBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleModifyConfirmBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleModifyConfirmBut.setText("Confirmar");
     SaleModifyConfirmBut.setMaximumSize(new java.awt.Dimension(120, 24));
     SaleModifyConfirmBut.setMinimumSize(new java.awt.Dimension(120, 24));
@@ -1404,7 +1416,7 @@ public class MainW extends javax.swing.JFrame {
     SaleModifyHellPanel.add(SaleModifyConfirmBut);
     SaleModifyConfirmBut.setBounds(0, 320, 120, 30);
 
-    SaleModifyCancelBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleModifyCancelBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleModifyCancelBut.setText("Cancelar");
     SaleModifyCancelBut.setMaximumSize(new java.awt.Dimension(120, 30));
     SaleModifyCancelBut.setMinimumSize(new java.awt.Dimension(120, 30));
@@ -1418,39 +1430,39 @@ public class MainW extends javax.swing.JFrame {
     SaleModifyHeavenPanel.setMinimumSize(new java.awt.Dimension(480, 425));
     SaleModifyHeavenPanel.setLayout(null);
 
-    SaleModifyIDLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleModifyIDLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleModifyIDLabel.setText("ID de Venta:");
     SaleModifyHeavenPanel.add(SaleModifyIDLabel);
     SaleModifyIDLabel.setBounds(80, 60, 140, 30);
 
-    SaleModifyIDInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleModifyIDInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleModifyHeavenPanel.add(SaleModifyIDInput);
     SaleModifyIDInput.setBounds(270, 60, 130, 30);
 
-    SaleModifyResourceLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleModifyResourceLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleModifyResourceLabel.setText("Nuevo recurso:");
     SaleModifyHeavenPanel.add(SaleModifyResourceLabel);
     SaleModifyResourceLabel.setBounds(80, 140, 140, 30);
 
-    SaleModifyResourceInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleModifyResourceInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleModifyHeavenPanel.add(SaleModifyResourceInput);
     SaleModifyResourceInput.setBounds(270, 140, 130, 30);
 
-    SaleModifyCuantityLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleModifyCuantityLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleModifyCuantityLabel.setText("Nueva Cantidad:");
     SaleModifyHeavenPanel.add(SaleModifyCuantityLabel);
     SaleModifyCuantityLabel.setBounds(80, 220, 140, 30);
 
-    SaleModifyCuantityInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleModifyCuantityInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleModifyHeavenPanel.add(SaleModifyCuantityInput);
     SaleModifyCuantityInput.setBounds(270, 220, 130, 30);
 
-    SaleModifyPriceLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleModifyPriceLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleModifyPriceLabel.setText("Nuevo Precio:");
     SaleModifyHeavenPanel.add(SaleModifyPriceLabel);
     SaleModifyPriceLabel.setBounds(80, 300, 140, 30);
 
-    SaleModifyPriceInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleModifyPriceInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleModifyHeavenPanel.add(SaleModifyPriceInput);
     SaleModifyPriceInput.setBounds(270, 300, 130, 30);
 
@@ -1472,7 +1484,7 @@ public class MainW extends javax.swing.JFrame {
     SaleRemoveHellPanel.setMinimumSize(new java.awt.Dimension(120, 425));
     SaleRemoveHellPanel.setLayout(null);
 
-    SaleRemoveConfirmBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleRemoveConfirmBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleRemoveConfirmBut.setText("Confirmar");
     SaleRemoveConfirmBut.setMaximumSize(new java.awt.Dimension(120, 24));
     SaleRemoveConfirmBut.setMinimumSize(new java.awt.Dimension(120, 24));
@@ -1480,7 +1492,7 @@ public class MainW extends javax.swing.JFrame {
     SaleRemoveHellPanel.add(SaleRemoveConfirmBut);
     SaleRemoveConfirmBut.setBounds(0, 320, 120, 30);
 
-    SaleRemoveCancelBut.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleRemoveCancelBut.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleRemoveCancelBut.setText("Cancelar");
     SaleRemoveCancelBut.setMaximumSize(new java.awt.Dimension(120, 30));
     SaleRemoveCancelBut.setMinimumSize(new java.awt.Dimension(120, 30));
@@ -1494,39 +1506,39 @@ public class MainW extends javax.swing.JFrame {
     SaleRemoveHeavenPanel.setMinimumSize(new java.awt.Dimension(480, 425));
     SaleRemoveHeavenPanel.setLayout(null);
 
-    SaleRemoveIDLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleRemoveIDLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleRemoveIDLabel.setText("ID de Venta:");
     SaleRemoveHeavenPanel.add(SaleRemoveIDLabel);
     SaleRemoveIDLabel.setBounds(80, 60, 140, 30);
 
-    SaleRemoveIDInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleRemoveIDInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleRemoveHeavenPanel.add(SaleRemoveIDInput);
     SaleRemoveIDInput.setBounds(270, 60, 130, 30);
 
-    SaleRemoveResourceLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleRemoveResourceLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleRemoveResourceLabel.setText("Recurso:");
     SaleRemoveHeavenPanel.add(SaleRemoveResourceLabel);
     SaleRemoveResourceLabel.setBounds(80, 140, 140, 30);
 
-    SaleRemoveResourceInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleRemoveResourceInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleRemoveHeavenPanel.add(SaleRemoveResourceInput);
     SaleRemoveResourceInput.setBounds(270, 140, 130, 30);
 
-    SaleRemoveCuantityLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleRemoveCuantityLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleRemoveCuantityLabel.setText("Cantidad:");
     SaleRemoveHeavenPanel.add(SaleRemoveCuantityLabel);
     SaleRemoveCuantityLabel.setBounds(80, 220, 140, 30);
 
-    SaleRemoveCuantityInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleRemoveCuantityInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleRemoveHeavenPanel.add(SaleRemoveCuantityInput);
     SaleRemoveCuantityInput.setBounds(270, 220, 130, 30);
 
-    SaleRemovePriceLabel.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleRemovePriceLabel.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleRemovePriceLabel.setText("Precio:");
     SaleRemoveHeavenPanel.add(SaleRemovePriceLabel);
     SaleRemovePriceLabel.setBounds(80, 300, 140, 30);
 
-    SaleRemovePriceInput.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+    SaleRemovePriceInput.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
     SaleRemoveHeavenPanel.add(SaleRemovePriceInput);
     SaleRemovePriceInput.setBounds(270, 300, 130, 30);
 
@@ -1544,15 +1556,19 @@ public class MainW extends javax.swing.JFrame {
     MainWMenuBar.setPreferredSize(new java.awt.Dimension(264, 25));
 
     ResTableMenu.setText("Recursos");
+    ResTableMenu.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
     MainWMenuBar.add(ResTableMenu);
 
     DonorTableMenu.setText("Donantes");
+    DonorTableMenu.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
     MainWMenuBar.add(DonorTableMenu);
 
     DonaTableMenu.setText("Donaciones");
+    DonaTableMenu.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
     MainWMenuBar.add(DonaTableMenu);
 
     SaleTableMenu.setText("Ventas");
+    SaleTableMenu.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
     MainWMenuBar.add(SaleTableMenu);
 
     setJMenuBar(MainWMenuBar);
@@ -2712,7 +2728,6 @@ public class MainW extends javax.swing.JFrame {
     
     private void launchRowRemover(String tableName, int id, int id2, String time){
         try{
-            System.out.println("puto resultset");
             ResultSet res;
             
             switch(tableName){
