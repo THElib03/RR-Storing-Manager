@@ -3370,7 +3370,7 @@ public class MainW extends javax.swing.JFrame {
         auxBridge.startConnection();
         ResultSet res;
         ResultSet auxRes = null;
-        String query = "";
+        String query = "", auxQuery1 = "", auxQuery2 = "";
         
         System.out.println("User wants to searched for " + text + " in the table " + tableName + " and the " + factor + " category.");
         switch(tableName){
@@ -3436,18 +3436,39 @@ public class MainW extends javax.swing.JFrame {
                 }
                 
                 if(factor == 2){
-                    
-                }
-                else if(factor == 3){
-                    query = "SELECT * FROM Donation WHERE resID = (SELECT ID FROM Resource WHERE type LIKE '%" + text + "%')";
+                    query = "SELECT * FROM Donation WHERE donorID = (SELECT ID FROM Donor WHERE name LIKE '%" + text + "%')";
+                    auxQuery1 = "SELECT * FROM Donor WHERE ID = ";
+                    auxQuery2 = "SELECT * FROM Resource WHERE ID = ";
                     
                     try{
                         res = bridge.querier.executeQuery(query);
                         
                         while(res.next()){
-                            auxRes = auxBridge.querier.executeQuery("SELECT * FROM Donor WHERE ID = " + res.getInt(5));
+                            auxRes = auxBridge.querier.executeQuery(auxQuery1 + res.getInt(5));
                             String donor = auxRes.getString(2);
-                            auxRes = auxBridge.querier.executeQuery("SELECT * FROM Resource WHERE ID = " + res.getInt(4));
+                            auxRes = auxBridge.querier.executeQuery(auxQuery2 + res.getInt(4));
+                            String resor = auxRes.getString(2);
+
+                            tModel.addRow(new Object[] { donor + " (" + res.getInt(5) + ")", resor + " (" + res.getInt(4) + ")", res.getLong(1), res.getInt(2), res.getString(3) });              
+                        }
+                    }
+                    catch(SQLException sqle) {
+                        this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
+                        sqle.printStackTrace();
+                    }
+                }
+                else if(factor == 3){
+                    query = "SELECT * FROM Donation WHERE resID = (SELECT ID FROM Resource WHERE type LIKE '%" + text + "%')";
+                    auxQuery1 = "SELECT * FROM Donor WHERE ID = ";
+                    auxQuery2 = "SELECT * FROM Resource WHERE ID = ";
+                    
+                    try{
+                        res = bridge.querier.executeQuery(query);
+                        
+                        while(res.next()){
+                            auxRes = auxBridge.querier.executeQuery(auxQuery1 + res.getInt(5));
+                            String donor = auxRes.getString(2);
+                            auxRes = auxBridge.querier.executeQuery(auxQuery2 + res.getInt(4));
                             String resor = auxRes.getString(2);
 
                             tModel.addRow(new Object[] { donor + " (" + res.getInt(5) + ")", resor + " (" + res.getInt(4) + ")", res.getLong(1), res.getInt(2), res.getString(3) });              
@@ -3459,7 +3480,26 @@ public class MainW extends javax.swing.JFrame {
                     }
                 }
                 else if(factor == 4){
+                    query = "SELECT * FROM Donation WHERE sendTime LIKE '%" + text + "%'";
+                    auxQuery1 = "SELECT * FROM Donor WHERE ID = ";
+                    auxQuery2 = "SELECT * FROM Resource WHERE ID = ";
                     
+                    try{
+                        res = bridge.querier.executeQuery(query);
+                        
+                        while(res.next()){
+                            auxRes = auxBridge.querier.executeQuery(auxQuery1 + res.getInt(5));
+                            String donor = auxRes.getString(2);
+                            auxRes = auxBridge.querier.executeQuery(auxQuery2 + res.getInt(4));
+                            String resor = auxRes.getString(2);
+
+                            tModel.addRow(new Object[] { donor + " (" + res.getInt(5) + ")", resor + " (" + res.getInt(4) + ")", res.getLong(1), res.getInt(2), res.getString(3) });              
+                        }
+                    }
+                    catch(SQLException sqle) {
+                        this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
+                        sqle.printStackTrace();
+                    }
                 }
                 else{
                     message("Error interno", "Ha ocurrido un error.\n(El programa ha intentado hacer una búsqueda\nque no se corresponde con esta tabla.)", 1);
@@ -3473,10 +3513,40 @@ public class MainW extends javax.swing.JFrame {
                 }
                 
                 if(factor == 3){
+                    query = "SELECT * FROM Sale WHERE resID = (SELECT ID FROM Resource WHERE type LIKE '%" + text + "%')";
+                    auxQuery1 = "SELECT * FROM Resource WHERE ID = ";
                     
+                    try{
+                        res = bridge.querier.executeQuery(query);
+                        
+                        while(res.next()){
+                            auxRes = auxBridge.querier.executeQuery(auxQuery1 + res.getInt(5));
+                            
+                            tModel.addRow(new Object[] { res.getInt(1), auxRes.getString(2) + " (" + res.getInt(5) + ")", res.getLong(2), res.getInt(3), res.getString(4) });
+                        }
+                    }
+                    catch(SQLException sqle) {
+                        this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
+                        sqle.printStackTrace();
+                    }
                 }
                 else if(factor == 4){
+                    query = "SELECT * FROM Sale WHERE sellTime LIKE '%" + text + "%'";
+                    auxQuery1 = "SELECT * FROM Resource WHERE ID = ";
                     
+                    try{
+                        res = bridge.querier.executeQuery(query);
+                        
+                        while(res.next()){
+                            auxRes = auxBridge.querier.executeQuery(auxQuery1 + res.getInt(5));
+                            
+                            tModel.addRow(new Object[] { res.getInt(1), auxRes.getString(2) + " (" + res.getInt(5) + ")", res.getLong(2), res.getInt(3), res.getString(4) });
+                        }
+                    }
+                    catch(SQLException sqle) {
+                        this.message("Error Interno","Error SQL: " + sqle.getMessage(),1);
+                        sqle.printStackTrace();
+                    }
                 }
                 else{
                     message("Error interno", "Ha ocurrido un error.\n(El programa ha intentado hacer una búsqueda\nque no se corresponde con esta tabla.)", 1);
