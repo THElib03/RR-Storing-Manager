@@ -1,7 +1,7 @@
 # RR Storing Manager
 #### Actual state of the project (not an explanation of what the program is capable of):
 - CRUD for all the tables.
- - Added al checks to avoid SQL errors while adding, modifying or removing table's rows.
+  - Added al checks to avoid SQL errors while adding, modifying or removing table's rows.
 - Search tools for the tables panels (maybe add a button with icon for better understanding instead of just hitting Enter).
 - Visual component (JBeans) integrated in the menu bar to help the user know where the panel/window it is working on.
 
